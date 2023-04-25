@@ -1,26 +1,35 @@
 import { Group, Stack } from '@mantine/core';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
-import CardItem from '../components/CardItem/CardItem';
-import authorization from '../API/Authorization/Authorization';
+import authorization from '../API/authorization/authorization';
+import getVacancies from '../API/Getvacancies/Getvacancies';
+import Cardlist from '../components/CardList/CardList';
 
 const Home = () => {
-  // const [cats, setCats] = useState([] as ICard[]);
-
+  const [cards, setCards] = useState([]);
+  const getVacanciesArray = async () => {
+    const token = await authorization();
+    console.log('token', token);
+    if (token) {
+      const res = await getVacancies(token);
+      if (res) {
+        console.log(res);
+        setCards(res);
+      }
+    }
+  };
   useEffect(() => {
-    const token = authorization();
-    console.log(token);
-    // 
+    getVacanciesArray();
   }, []);
-
+  console.log(cards, 'ads');
   return (
     <main className="main">
       <Group>
         <Form />
         <Stack>
           <SearchInput />
-          <CardItem />
+          {cards.length > 0 && <Cardlist cards={cards} />}
         </Stack>
       </Group>
     </main>

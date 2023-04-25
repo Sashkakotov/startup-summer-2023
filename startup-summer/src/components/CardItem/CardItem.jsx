@@ -1,23 +1,27 @@
-import { Card, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Text, Badge, Group } from '@mantine/core';
 
-const CardItem = () => {
+const CardItem = (card) => {
+  console.log(card);
   return (
     <Card shadow="sm" p="lg" radius="md" withBorder>
       <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>Norway Fjord Adventures</Text>
+        <Text weight={500}>{card.profession}</Text>
         <Badge color="pink" variant="light">
           On Sale
         </Badge>
       </Group>
+      <Group>
+        <Text size="sm" color="dimmed">
+          {`${card.payment_from} ${card.payment_to} ${card.currency}`}
+        </Text>
+        <Text size="sm" color="dimmed">
+          {card.type_of_work.title}
+        </Text>
+      </Group>
 
       <Text size="sm" color="dimmed">
-        With Fjord Tours you can explore more of the magical fjord landscapes with tours and
-        activities on and around the fjords of Norway
+        {card.town.genitive}
       </Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Book classic tour now
-      </Button>
     </Card>
   );
 };
