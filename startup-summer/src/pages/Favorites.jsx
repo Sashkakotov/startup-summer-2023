@@ -2,7 +2,8 @@ import React from 'react';
 
 const Favorites = () => {
   return (
-    <main className="main" data-testid="main">
+    <main className="main">
+      <>{'Favorites'}</>
       {/* <SearchInput />
       <CardList cats={cats} /> */}
     </main>

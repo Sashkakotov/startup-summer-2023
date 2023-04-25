@@ -1,19 +1,28 @@
-import React from 'react';
+import { Group, Stack } from '@mantine/core';
+import React, { useEffect } from 'react';
+import Form from '../components/Form/Form';
+import SearchInput from '../components/SearchInput/SearchInput';
+import CardItem from '../components/CardItem/CardItem';
+import authorization from '../API/Authorization/Authorization';
 
 const Home = () => {
   // const [cats, setCats] = useState([] as ICard[]);
 
-  // useEffect(() => {
-  //   const result = getCats();
-  //   if (result) {
-  //     setCats(result);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = authorization();
+    console.log(token);
+    // 
+  }, []);
 
   return (
-    <main className="main" data-testid="main">
-      {/* <SearchInput />
-      <CardList cats={cats} /> */}
+    <main className="main">
+      <Group>
+        <Form />
+        <Stack>
+          <SearchInput />
+          <CardItem />
+        </Stack>
+      </Group>
     </main>
   );
 };
