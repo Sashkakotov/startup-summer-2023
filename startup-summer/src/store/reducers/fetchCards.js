@@ -1,5 +1,8 @@
-const getVacancies = async (token) => {
+import { cardSlice } from './cardSlice';
+
+const fetchCards = (token) => async (dispatch) => {
   try {
+    dispatch(cardSlice.actions.cardsFetching());
     const url = `	https://startup-summer-2023-proxy.onrender.com/2.0/vacancies/`;
     const response = await fetch(url, {
       method: 'GET',
@@ -10,14 +13,12 @@ const getVacancies = async (token) => {
         'x-secret-key': 'GEU4nvd3rej*jeh.eqp'
       }
     });
-    // if (response.status !== 200) {
-    //   throw { ...(await response.json()) }.error;
-    //
     const result = await response.json();
-
-    return result.objects;
-  } catch (err) {
-    console.log(err);
+    console.log(result.objects);
+    dispatch(cardSlice.actions.cardsFetchingSuccess(result.objects));
+    return;
+  } catch (e) {
+    dispatch(cardSlice.actions.cardsFetchingError(String(e)));
   }
 };
-export default getVacancies;
+export default fetchCards;

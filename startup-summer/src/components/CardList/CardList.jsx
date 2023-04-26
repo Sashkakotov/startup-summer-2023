@@ -1,16 +1,27 @@
-import { List } from '@mantine/core';
+import { Stack } from '@mantine/core';
 import CardItem from '../CardItem/CardItem';
+import PropTypes from 'prop-types';
 
-const Cardlist = (cards) => {
-  console.log('Cardlist', cards.cards);
-
+const Cardlist = ({ cards, checkedCards, setCheckedCards }) => {
   return (
-    <List>
-      {cards.cards.map((card) => {
-        console.log('hello', card);
-        return <CardItem key={card.id} {...card} />;
+    <Stack spacing="16px">
+      {cards.map((card) => {
+        return (
+          <CardItem
+            key={card.id}
+            card={card}
+            checkedCards={checkedCards}
+            setCheckedCards={setCheckedCards}
+          />
+        );
       })}
-    </List>
+    </Stack>
   );
 };
+Cardlist.propTypes = {
+  cards: PropTypes.array.isRequired,
+  checkedCards: PropTypes.array.isRequired,
+  setCheckedCards: PropTypes.func.isRequired
+};
+
 export default Cardlist;

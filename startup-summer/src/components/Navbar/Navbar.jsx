@@ -110,16 +110,15 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-// interface HeaderResponsiveProps {
-//   links: { link: string, label: string }[];
-// }
 const links = [
   { link: '/', label: 'Home' },
   { link: '/favorites', label: 'favorites' }
 ];
-function HeaderResponsive() {
+const HeaderResponsive = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState(
+    links.filter((el) => el.link === String(location.pathname))[0].link
+  );
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
@@ -156,5 +155,5 @@ function HeaderResponsive() {
       </Container>
     </Header>
   );
-}
+};
 export default HeaderResponsive;
