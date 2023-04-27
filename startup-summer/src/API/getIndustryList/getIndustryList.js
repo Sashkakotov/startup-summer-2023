@@ -1,6 +1,6 @@
-const getVacancies = async (token, search = '', paymentFrom, paymentTo, industry) => {
+const getIndustryList = async (token) => {
   try {
-    const url = `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies/?published=1&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`;
+    const url = `https://startup-summer-2023-proxy.onrender.com/2.0/catalogues/`;
     console.log(url);
     const response = await fetch(url, {
       method: 'GET',
@@ -11,11 +11,17 @@ const getVacancies = async (token, search = '', paymentFrom, paymentTo, industry
         'x-secret-key': 'GEU4nvd3rej*jeh.eqp'
       }
     });
+    // if (response.status !== 200) {
+    //   throw { ...(await response.json()) }.error;
+    //
     const result = await response.json();
-
-    return result.objects;
+    const industriesList = result.map((el) => ({
+      value: el.key,
+      label: el.title
+    }));
+    return industriesList;
   } catch (err) {
     console.log(err);
   }
 };
-export default getVacancies;
+export default getIndustryList;

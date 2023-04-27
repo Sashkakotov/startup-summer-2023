@@ -14,7 +14,7 @@ const fetchCards = (token) => async (dispatch) => {
       }
     });
     const result = await response.json();
-    console.log(result.objects);
+
     dispatch(cardSlice.actions.cardsFetchingSuccess(result.objects));
     return;
   } catch (e) {

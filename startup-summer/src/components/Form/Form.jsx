@@ -1,36 +1,31 @@
-import { Button, Group, Box, Text, NumberInput, CloseButton } from '@mantine/core';
+import { Button, Group, Box, Text, NumberInput, CloseButton, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import IndustryInput from '../IndustryInput/IndustryInput';
+// import IndustryInput from '../IndustryInput/IndustryInput';
 
-function Form() {
-  const form = useForm({
-    initialValues: {
-      industry: '',
-      termsOfService: false
-    },
-
-    validate: {
-      // email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email')
-    }
-  });
-
+const Form = ({ industriesList, form }) => {
   return (
-    <Box sx={{ maxWidth: 300 }} mx="auto">
-      <CloseButton title="Settings" sx={{ width: '200px', height: '30px ' }}>
-        Сбросить все x
-      </CloseButton>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+    <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <Box sx={{ maxWidth: 300 }} mx="auto">
+        <CloseButton title="Settings" sx={{ width: '200px', height: '30px ' }}>
+          Сбросить все x
+        </CloseButton>
+
         <Text fz="md">Отрасль</Text>
-        <IndustryInput {...form.getInputProps('industry')} />
+        <Select
+          {...form.getInputProps('industry')}
+          data={industriesList}
+          placeholder="Выберите отрасль"
+        />
+        {/* <IndustryInput industriesList={industriesList} /> */}
         <Text fz="md">Оклад</Text>
-        <NumberInput placeholder="От" />
-        <NumberInput placeholder="До" />
+        <NumberInput placeholder="От" {...form.getInputProps('paymentFrom')} />
+        <NumberInput placeholder="До" {...form.getInputProps('paymentTo')} />
 
         <Group position="right" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Применить</Button>
         </Group>
-      </form>
-    </Box>
+      </Box>
+    </form>
   );
-}
+};
 export default Form;

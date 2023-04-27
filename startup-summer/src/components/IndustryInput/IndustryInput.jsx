@@ -1,16 +1,11 @@
-import { MultiSelect } from '@mantine/core';
+// import { Select } from '@mantine/core';
+// import { useState } from 'react';
 
-const data = [
-  { value: 'react', label: 'React' },
-  { value: 'ng', label: 'Angular' },
-  { value: 'svelte', label: 'Svelte' },
-  { value: 'vue', label: 'Vue' },
-  { value: 'riot', label: 'Riot' },
-  { value: 'next', label: 'Next.js' },
-  { value: 'blitz', label: 'Blitz.js' }
-];
-
-function IndustryInput() {
-  return <MultiSelect data={data} placeholder="Выберите отрасль" />;
-}
-export default IndustryInput;
+// const IndustryInput = ({ industriesList }) => {
+//   const [value, setValue] = useState('');
+//   console.log('IndustryInput', value);
+//   return (
+  
+//   );
+// };
+// export default IndustryInput;
