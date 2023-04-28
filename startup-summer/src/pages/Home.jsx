@@ -22,6 +22,8 @@ const Home = () => {
   const [checkedCards, setCheckedCards] = useState(
     localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []
   );
+  const [formValues, setFormValues] = useState({ industry: '', paymentFrom: '', paymentTo: '' });
+  console.log('formValues', formValues);
   const form = useForm({
     initialValues: {
       industry: '',
@@ -33,9 +35,10 @@ const Home = () => {
       // email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email')
     }
   });
-  console.log('form.values', form.values);
+
   const getToken = async () => {
     const token = await authorization();
+    console.log(token);
     if (token) {
       setToken(token);
     }
@@ -47,14 +50,14 @@ const Home = () => {
     }
   };
 
-  const getVacanciesArray = async (token, search) => {
+  const getVacanciesArray = async (token) => {
     setLoader(true);
     const res = await getVacancies(
       token,
-      search,
-      String(form.values.paymentFrom),
-      String(form.values.paymentTo),
-      form.values.industry
+      searchInputValue,
+      String(formValues.paymentFrom),
+      String(formValues.paymentTo),
+      formValues.industry
     );
     if (res) {
       setCards(res);
@@ -68,24 +71,31 @@ const Home = () => {
 
   useEffect(() => {
     if (token) {
-      getVacanciesArray(token, '');
+      getVacanciesArray(token);
       getIndustriesList(token);
     }
   }, [token]);
+
+  useEffect(() => {
+    getVacanciesArray(token);
+  }, [formValues]);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
 
   const handleSearchInput = (e) => {
-    getVacanciesArray(token, searchInputValue);
+    getVacanciesArray(token);
     e.preventDefault();
+  };
+  const handleFormSubmit = () => {
+    setFormValues(form.values);
   };
   return (
     <main className="main">
       {loader && <Loader />}
       <Group align={'flex-start'}>
-        <Form industriesList={industriesList} form={form} />
+        <Form industriesList={industriesList} form={form} handleFormSubmit={handleFormSubmit} />
         <Stack>
           <SearchInput
             handleSearchInput={handleSearchInput}
