@@ -3,13 +3,19 @@ import { useForm } from '@mantine/form';
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
+  console.log('111111', form);
   return (
     <form onSubmit={form.onSubmit(handleFormSubmit)}>
       <Box sx={{ maxWidth: 300 }} mx="auto">
         <CloseButton
           title="Settings"
           sx={{ width: '200px', height: '30px ' }}
-          onChange={() => setFormValues({ industry: '', paymentFrom: '', paymentTo: '' })}>
+          onClick={() => {
+            form.values.industry = '';
+            form.values.paymentFrom = '';
+            form.values.paymentTo = '';
+            setFormValues({ industry: '', paymentFrom: '', paymentTo: '' });
+          }}>
           Сбросить все x
         </CloseButton>
 

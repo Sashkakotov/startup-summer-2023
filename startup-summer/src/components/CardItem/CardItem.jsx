@@ -16,7 +16,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
     }
   };
   return (
-    <Card shadow="sm" p="lg" radius="md" withBorder>
+    <Card shadow="sm" p="lg" radius="md" withBorder sx={{ maxWidth: '773px' }}>
       <Group position="apart" mt="md" mb="xs">
         <Text weight={500}>{card.profession}</Text>
         <StarButton checked={checked} checkboxHandler={checkboxHandler} />

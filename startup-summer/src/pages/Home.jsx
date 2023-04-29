@@ -117,13 +117,7 @@ const Home = () => {
           {cards.length > 0 && (
             <Cardlist cards={cards} checkedCards={checkedCards} setCheckedCards={setCheckedCards} />
           )}
-          <Pagination
-            onChange={setPage}
-            boundaries={0}
-            siblings={1}
-            defaultValue={10}
-            total={125}
-          />
+          <Pagination onChange={setPage} boundaries={0} siblings={1} defaultValue={1} total={125} />
         </Stack>
       </Group>
     </main>
