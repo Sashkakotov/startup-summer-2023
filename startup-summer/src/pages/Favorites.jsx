@@ -1,7 +1,9 @@
+import { Pagination } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Cardlist from '../components/CardList/CardList';
 
 const Favorites = () => {
+  const [page, setPage] = useState(1);
   const [checkedCards, setCheckedCards] = useState(
     localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []
   );
@@ -20,6 +22,13 @@ const Favorites = () => {
           setCheckedCards={setCheckedCards}
         />
       )}
+      <Pagination
+        onChange={setPage}
+        boundaries={0}
+        siblings={1}
+        defaultValue={1}
+        total={checkedCards.length}
+      />
     </main>
   );
 };

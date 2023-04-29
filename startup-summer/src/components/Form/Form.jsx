@@ -2,11 +2,14 @@ import { Button, Group, Box, Text, NumberInput, CloseButton, Select } from '@man
 import { useForm } from '@mantine/form';
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
-const Form = ({ industriesList, form, handleFormSubmit }) => {
+const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
   return (
     <form onSubmit={form.onSubmit(handleFormSubmit)}>
       <Box sx={{ maxWidth: 300 }} mx="auto">
-        <CloseButton title="Settings" sx={{ width: '200px', height: '30px ' }}>
+        <CloseButton
+          title="Settings"
+          sx={{ width: '200px', height: '30px ' }}
+          onChange={() => setFormValues({ industry: '', paymentFrom: '', paymentTo: '' })}>
           Сбросить все x
         </CloseButton>
 

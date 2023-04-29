@@ -1,4 +1,4 @@
-import { Group, Loader, Stack } from '@mantine/core';
+import { Group, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
@@ -15,6 +15,7 @@ const Home = () => {
   // const { cards, isLoading, error } = useSelector((state) => state.cardReducer);
   const [token, setToken] = useState('');
   const [cards, setCards] = useState([]);
+  const [page, setPage] = useState(1);
 
   const [loader, setLoader] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -24,6 +25,7 @@ const Home = () => {
   );
   const [formValues, setFormValues] = useState({ industry: '', paymentFrom: '', paymentTo: '' });
   console.log('formValues', formValues);
+  console.log('page', page);
   const form = useForm({
     initialValues: {
       industry: '',
@@ -54,6 +56,7 @@ const Home = () => {
     setLoader(true);
     const res = await getVacancies(
       token,
+      page,
       searchInputValue,
       String(formValues.paymentFrom),
       String(formValues.paymentTo),
@@ -77,15 +80,19 @@ const Home = () => {
   }, [token]);
 
   useEffect(() => {
-    getVacanciesArray(token);
-  }, [formValues]);
+    if (token) {
+      getVacanciesArray(token);
+    }
+  }, [formValues, page]);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
 
   const handleSearchInput = (e) => {
-    getVacanciesArray(token);
+    if (token) {
+      getVacanciesArray(token);
+    }
     e.preventDefault();
   };
   const handleFormSubmit = () => {
@@ -95,7 +102,12 @@ const Home = () => {
     <main className="main">
       {loader && <Loader />}
       <Group align={'flex-start'}>
-        <Form industriesList={industriesList} form={form} handleFormSubmit={handleFormSubmit} />
+        <Form
+          industriesList={industriesList}
+          form={form}
+          handleFormSubmit={handleFormSubmit}
+          setFormValues={setFormValues}
+        />
         <Stack>
           <SearchInput
             handleSearchInput={handleSearchInput}
@@ -105,6 +117,13 @@ const Home = () => {
           {cards.length > 0 && (
             <Cardlist cards={cards} checkedCards={checkedCards} setCheckedCards={setCheckedCards} />
           )}
+          <Pagination
+            onChange={setPage}
+            boundaries={0}
+            siblings={1}
+            defaultValue={10}
+            total={125}
+          />
         </Stack>
       </Group>
     </main>
