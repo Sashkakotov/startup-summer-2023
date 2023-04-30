@@ -1,40 +1,138 @@
-import { Button, Group, Box, Text, NumberInput, CloseButton, Select } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import {
+  Button,
+  Group,
+  Box,
+  Text,
+  NumberInput,
+  CloseButton,
+  Select,
+  Flex,
+  Stack
+} from '@mantine/core';
+import { ChevronDown, Selector } from 'tabler-icons-react';
+
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
-  console.log('111111', form);
+  console.log('111111', typeof form);
   return (
-    <form onSubmit={form.onSubmit(handleFormSubmit)}>
-      <Box sx={{ maxWidth: 300 }} mx="auto">
-        <CloseButton
-          title="Settings"
-          sx={{ width: '200px', height: '30px ' }}
-          onClick={() => {
-            form.values.industry = '';
-            form.values.paymentFrom = '';
-            form.values.paymentTo = '';
-            setFormValues({ industry: '', paymentFrom: '', paymentTo: '' });
-          }}>
-          Сбросить все x
-        </CloseButton>
+    <Box
+      sx={{
+        maxWidth: '315px',
+        width: '100%',
+        background: '#FFFFFF',
+        border: '1px solid #EAEBED',
+        borderRadius: '12px',
+        marginLeft: '0px !important',
+        marginRight: '13px !important'
+      }}
+      mx="auto">
+      <form onSubmit={form.onSubmit(handleFormSubmit)}>
+        <Stack sx={{ maxWidth: '275px', width: '100%', margin: '20px  auto 20px' }}>
+          <Flex justify={'space-between'} sx={{ height: '20px' }} align={'center'}>
+            <Text fw={700} size={20}>
+              Фильтры
+            </Text>
+            <Button
+              variant="subtle"
+              compact
+              title="Settings"
+              sx={{
+                maxWidth: '115px',
+                width: '100%',
+                height: '20px',
+                color: '#ACADB9',
+                fontSize: '14px',
+                padding: '0px'
+              }}
+              styles={{
+                rightIcon: {
+                  color: '#ACADB9',
+                  width: '16px',
+                  height: '16px',
+                  marginLeft: '0px'
+                }
+              }}
+              onClick={() => {
+                form.values.industry = '';
+                form.values.paymentFrom = '';
+                form.values.paymentTo = '';
+                setFormValues({ industry: '', paymentFrom: '', paymentTo: '' });
+              }}
+              rightIcon={<CloseButton aria-label="Close modal" sx={{ color: '#ACADB9' }} />}>
+              Сбросить все
+            </Button>
+          </Flex>
 
-        <Text fz="md">Отрасль</Text>
-        <Select
-          {...form.getInputProps('industry')}
-          data={industriesList}
-          placeholder="Выберите отрасль"
-        />
-        {/* <IndustryInput industriesList={industriesList} /> */}
-        <Text fz="md">Оклад</Text>
-        <NumberInput placeholder="От" {...form.getInputProps('paymentFrom')} />
-        <NumberInput placeholder="До" {...form.getInputProps('paymentTo')} />
+          <Stack
+            sx={{
+              marginTop: '13px',
+              gap: '5px'
+            }}>
+            <Text fw={700} align="start">
+              Отрасль
+            </Text>
+            <Select
+              {...form.getInputProps('industry')}
+              data={industriesList}
+              placeholder="Выберите отрасль"
+              radius={8}
+              rightSection={<ChevronDown size={24} strokeWidth={1.5} color={'#ACADB9'} />}
+              styles={{
+                input: {
+                  height: '42px'
+                },
+                rightSection: {
+                  width: '48px'
+                }
+              }}
+            />
+          </Stack>
+          <Stack
+            sx={{
+              gap: '7px'
+            }}>
+            <Text fw={700} align="start">
+              Оклад
+            </Text>
+            <NumberInput
+              placeholder="От"
+              {...form.getInputProps('paymentFrom')}
+              styles={{
+                input: {
+                  height: '42px',
+                  borderRadius: '8px'
+                }
+              }}
+              rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+            />
+            <NumberInput
+              placeholder="До"
+              {...form.getInputProps('paymentTo')}
+              styles={{
+                input: {
+                  height: '42px',
+                  borderRadius: '8px'
+                }
+              }}
+              rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+            />
+          </Stack>
 
-        <Group position="right" mt="md">
-          <Button type="submit">Применить</Button>
-        </Group>
-      </Box>
-    </form>
+          <Button
+            sx={{
+              maxWidth: '275px',
+              width: '100%',
+              height: '40px',
+              marginTop: '5px',
+              borderRadius: '8px'
+            }}
+            type="submit">
+            Применить
+          </Button>
+        </Stack>
+      </form>
+    </Box>
   );
 };
 export default Form;

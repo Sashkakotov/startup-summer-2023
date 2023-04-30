@@ -1,27 +1,3 @@
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
-
-// import { HOME_LINK } from '../../../constants/constants';
-// import { FAVORITES_LINK } from '../../constants/constants';
-// import styles from './Navbar.module.css';
-
-// const Navbar = () => {
-//   return (
-//     <div className="navbar">
-//       <div className="navbar-links">
-//         <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : undefined)}>
-//           {HOME_LINK}
-//         </NavLink>
-//         <NavLink
-//           to="/favorites"
-//           className={({ isActive }) => (isActive ? styles.active : undefined)}>
-//           {FAVORITES_LINK}
-//         </NavLink>
-//       </div>
-//     </div>
-//   );
-// };
-// export default Navbar;
 import { useState } from 'react';
 import {
   createStyles,
@@ -32,18 +8,20 @@ import {
   Paper,
   Transition,
   rem,
-  Text
+  Text,
+  px
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantine/ds';
 import { Link } from 'react-router-dom';
 
-const HEADER_HEIGHT = rem(60);
+const HEADER_HEIGHT = px(84);
 
 const useStyles = createStyles((theme) => ({
   root: {
     position: 'relative',
-    zIndex: 1
+    zIndex: 1,
+    borderBottom: '0px'
   },
 
   dropdown: {
@@ -136,7 +114,7 @@ const HeaderResponsive = () => {
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
+    <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
         <MantineLogo size={28} />
         <Group spacing={5} className={classes.links}>

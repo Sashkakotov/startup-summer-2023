@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Cardlist = ({ cards, checkedCards, setCheckedCards }) => {
   return (
-    <Stack spacing="16px">
+    <Stack spacing="16px" sx={{ width: '773px' }}>
       {cards.map((card) => {
         return (
           <CardItem

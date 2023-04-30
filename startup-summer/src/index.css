@@ -1,5 +1,8 @@
+body {
+  box-sizing: border-box;
+}
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,6 +20,8 @@ a:hover {
 }
 .main {
   margin: 0 auto;
+  padding-top: 40px;
+  background: #f7f7f8;
   display: flex;
   flex-direction: column;
   align-items: center;

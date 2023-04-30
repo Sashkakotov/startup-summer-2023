@@ -101,14 +101,14 @@ const Home = () => {
   return (
     <main className="main">
       {loader && <Loader />}
-      <Group align={'flex-start'}>
+      <Group align={'flex-start'} sx={{ maxWidth: '1116px', width: '100%' }}>
         <Form
           industriesList={industriesList}
           form={form}
           handleFormSubmit={handleFormSubmit}
           setFormValues={setFormValues}
         />
-        <Stack>
+        <Stack sx={{ maxWidth: '737px', width: '100%' }}>
           <SearchInput
             handleSearchInput={handleSearchInput}
             searchInputValue={searchInputValue}
@@ -117,7 +117,15 @@ const Home = () => {
           {cards.length > 0 && (
             <Cardlist cards={cards} checkedCards={checkedCards} setCheckedCards={setCheckedCards} />
           )}
-          <Pagination onChange={setPage} boundaries={0} siblings={1} defaultValue={1} total={125} />
+          {cards.length > 0 && (
+            <Pagination
+              onChange={setPage}
+              boundaries={0}
+              siblings={1}
+              defaultValue={1}
+              total={125}
+            />
+          )}
         </Stack>
       </Group>
     </main>
