@@ -14,6 +14,8 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantine/ds';
 import { Link } from 'react-router-dom';
+import Chevron from '/chevron.svg';
+import Logo from '../Logo/Logo';
 
 const HEADER_HEIGHT = px(84);
 
@@ -42,13 +44,18 @@ const useStyles = createStyles((theme) => ({
 
   header: {
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
-    width: '100%'
+    maxWidth: '1116px',
+    width: '100%',
+    padding: '0px'
   },
 
   links: {
+    display: 'flex',
+    gap: '60px',
+    marginLeft: '280px',
     [theme.fn.smallerThan('sm')]: {
       display: 'none'
     }
@@ -63,11 +70,11 @@ const useStyles = createStyles((theme) => ({
   link: {
     display: 'block',
     lineHeight: 1,
-    padding: `${rem(8)} ${rem(12)}`,
+    // padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
+    fontSize: '16px',
     fontWeight: 500,
 
     '&:hover': {
@@ -82,15 +89,15 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     '&, &:hover': {
-      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+      // backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
       color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color
     }
   }
 }));
 
 const links = [
-  { link: '/', label: 'Home' },
-  { link: '/favorites', label: 'favorites' }
+  { link: '/', label: 'Поиск Вакансий' },
+  { link: '/favorites', label: 'Избранное' }
 ];
 const HeaderResponsive = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -116,7 +123,8 @@ const HeaderResponsive = () => {
   return (
     <Header height={HEADER_HEIGHT} className={classes.root}>
       <Container className={classes.header}>
-        <MantineLogo size={28} />
+        <Logo />
+
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

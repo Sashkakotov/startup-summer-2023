@@ -1,4 +1,4 @@
-import { Group, Loader, Pagination, Stack } from '@mantine/core';
+import { Flex, Group, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
@@ -101,14 +101,14 @@ const Home = () => {
   return (
     <main className="main">
       {loader && <Loader />}
-      <Group align={'flex-start'} sx={{ maxWidth: '1116px', width: '100%' }}>
+      <Flex align={'flex-start'} sx={{ maxWidth: '1116px', width: '100%' }}>
         <Form
           industriesList={industriesList}
           form={form}
           handleFormSubmit={handleFormSubmit}
           setFormValues={setFormValues}
         />
-        <Stack sx={{ maxWidth: '737px', width: '100%' }}>
+        <Stack sx={{ maxWidth: '773px', width: '100%' }}>
           <SearchInput
             handleSearchInput={handleSearchInput}
             searchInputValue={searchInputValue}
@@ -127,7 +127,7 @@ const Home = () => {
             />
           )}
         </Stack>
-      </Group>
+      </Flex>
     </main>
   );
 };

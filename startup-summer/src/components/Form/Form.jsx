@@ -14,7 +14,6 @@ import { ChevronDown, Selector } from 'tabler-icons-react';
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
-  console.log('111111', typeof form);
   return (
     <Box
       sx={{
@@ -24,7 +23,7 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
         border: '1px solid #EAEBED',
         borderRadius: '12px',
         marginLeft: '0px !important',
-        marginRight: '13px !important'
+        marginRight: '28px !important'
       }}
       mx="auto">
       <form onSubmit={form.onSubmit(handleFormSubmit)}>
@@ -83,7 +82,8 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
                   height: '42px'
                 },
                 rightSection: {
-                  width: '48px'
+                  width: '48px',
+                  pointerEvents: 'none'
                 }
               }}
             />
@@ -102,9 +102,22 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
                 input: {
                   height: '42px',
                   borderRadius: '8px'
+                },
+                controlUp: {
+                  border: '0px',
+                  color: '#ACADB9'
+                },
+                controlDown: {
+                  border: '0px',
+                  color: '#ACADB9'
+                },
+                rightSection: {
+                  height: '24px',
+                  top: '6px',
+                  right: '5px'
                 }
               }}
-              rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+              // rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
             />
             <NumberInput
               placeholder="До"
@@ -113,9 +126,22 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
                 input: {
                   height: '42px',
                   borderRadius: '8px'
+                },
+                controlUp: {
+                  border: '0px',
+                  color: '#ACADB9'
+                },
+                controlDown: {
+                  border: '0px',
+                  color: '#ACADB9'
+                },
+                rightSection: {
+                  height: '24px',
+                  top: '6px',
+                  right: '5px'
                 }
               }}
-              rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+              // rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
             />
           </Stack>
 
@@ -125,7 +151,8 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               width: '100%',
               height: '40px',
               marginTop: '5px',
-              borderRadius: '8px'
+              borderRadius: '8px',
+              background: '#5E96FC'
             }}
             type="submit">
             Применить

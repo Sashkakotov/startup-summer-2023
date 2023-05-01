@@ -4,15 +4,27 @@ import { Star } from 'tabler-icons-react';
 
 const CheckboxIcon = ({ indeterminate, className }) =>
   indeterminate ? (
-    <Star size={22} strokeWidth={1} color={'#ACADB9'} fill={'#5E96FC'} className={className} />
+    <Star size={22} strokeWidth={4} color={'green'} fill={'green'} className={className} />
   ) : (
-    <Star size={22} strokeWidth={1} color={'#ACADB9'} className={className} />
+    <Star size={22} strokeWidth={1} color={'#ACADB9'} fill={'black'} className={className} />
   );
 
 const StarButton = ({ checked, checkboxHandler }) => {
   return (
     <>
-      <Checkbox icon={CheckboxIcon} checked={checked} onChange={checkboxHandler} />
+      <Checkbox
+        icon={CheckboxIcon}
+        checked={checked}
+        onChange={checkboxHandler}
+        // styles={{
+        //   icon: {
+        //     pointerEvents: 'none'
+        //   },
+        // input: {
+        //   visibility: 'hidden'
+        // }
+        // }}
+      />
     </>
   );
 };

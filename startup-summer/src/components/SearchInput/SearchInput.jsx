@@ -14,14 +14,33 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
       <TextInput
         icon={<IconSearch size="1.1rem" stroke={1.5} />}
         radius="xl"
-        size="md"
+        sx={{ width: '100%' }}
+        styles={{
+          input: {
+            height: '48px',
+            borderRadius: '8px',
+            border: '1px solid #EAEBED'
+          },
+          rightSection: {
+            width: '107px'
+          }
+        }}
         rightSection={
-          <Button type={'submit'} size={32} radius="xl" color={theme.primaryColor} variant="filled">
-            {theme.dir === 'ltr' ? (
-              <IconArrowRight size="1.1rem" stroke={1.5} />
-            ) : (
-              <IconArrowLeft size="1.1rem" stroke={1.5} />
-            )}
+          <Button
+            type={'submit'}
+            variant="filled"
+            sx={{
+              width: '83px',
+              height: '32px',
+              background: '#5E96FC',
+              borderRadius: '8px',
+              border: '1px solid #EAEBED',
+              fontWeight: '500',
+              fontSize: '14px',
+              lineHeight: '21px',
+              textAlign: 'center'
+            }}>
+            Поиск
           </Button>
         }
         value={searchInputValue}
