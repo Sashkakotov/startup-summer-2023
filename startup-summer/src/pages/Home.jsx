@@ -1,4 +1,4 @@
-import { Flex, Group, Loader, Pagination, Stack } from '@mantine/core';
+import { Flex, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
@@ -10,10 +10,10 @@ import { useForm } from '@mantine/form';
 // import { useDispatch, useSelector } from 'react-redux';
 // import fetchCards from '../store/reducers/fetchCards';
 
-const Home = () => {
+const Home = ({ token }) => {
   // const dispatch = useDispatch();
   // const { cards, isLoading, error } = useSelector((state) => state.cardReducer);
-  const [token, setToken] = useState('');
+
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -24,8 +24,7 @@ const Home = () => {
     localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []
   );
   const [formValues, setFormValues] = useState({ industry: '', paymentFrom: '', paymentTo: '' });
-  console.log('formValues', formValues);
-  console.log('page', page);
+
   const form = useForm({
     initialValues: {
       industry: '',
@@ -38,14 +37,7 @@ const Home = () => {
     }
   });
 
-  const getToken = async () => {
-    const token = await authorization();
-    console.log(token);
-    if (token) {
-      setToken(token);
-    }
-  };
-  const getIndustriesList = async (token) => {
+  const getIndustriesList = async () => {
     const industriesList = await getIndustryList(token);
     if (industriesList) {
       setIndustriesList(industriesList);
@@ -67,10 +59,6 @@ const Home = () => {
     }
     setLoader(false);
   };
-
-  useEffect(() => {
-    getToken();
-  }, []);
 
   useEffect(() => {
     if (token) {

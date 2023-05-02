@@ -34,7 +34,8 @@ const StarButton = ({ checked, checkboxHandler }) => {
         icon={CheckboxIcon}
         indeterminate
         checked={checked}
-        onChange={checkboxHandler}
+        onClick={(e) => e.stopPropagation()}
+        onChange={() => checkboxHandler}
         className={classes.icon}
         sx={{
           marginTop: '2px',

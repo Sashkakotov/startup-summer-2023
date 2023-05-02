@@ -4,6 +4,7 @@ import StarButton from '../StarButton/StarButton';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Location from '../Location/Location';
+import { Link } from 'react-router-dom';
 
 const CardItem = ({ card, checkedCards, setCheckedCards }) => {
   const [checked, setChecked] = useState(checkedCards.some((el) => el.id === card.id));
@@ -18,6 +19,9 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
   };
   return (
     <Card
+      component={Link}
+      to={`/vacancy/${card.id}`}
+      onClick={() => localStorage.setItem('openCard', JSON.stringify(card))}
       p="lg"
       radius="12px"
       withBorder={'1px solid #EAEBED;'}

@@ -11,9 +11,6 @@ const getIndustryList = async (token) => {
         'x-secret-key': 'GEU4nvd3rej*jeh.eqp'
       }
     });
-    // if (response.status !== 200) {
-    //   throw { ...(await response.json()) }.error;
-    //
     const result = await response.json();
     const industriesList = result.map((el) => ({
       value: el.key,
