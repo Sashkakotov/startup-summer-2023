@@ -1,15 +1,5 @@
-import {
-  Button,
-  Group,
-  Box,
-  Text,
-  NumberInput,
-  CloseButton,
-  Select,
-  Flex,
-  Stack
-} from '@mantine/core';
-import { ChevronDown, Selector } from 'tabler-icons-react';
+import { Button, Box, Text, NumberInput, Select, Flex, Stack } from '@mantine/core';
+import { ChevronDown } from 'tabler-icons-react';
 
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
@@ -58,7 +48,8 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
                 form.values.paymentTo = '';
                 setFormValues({ industry: '', paymentFrom: '', paymentTo: '' });
               }}
-              rightIcon={<CloseButton aria-label="Close modal" sx={{ color: '#ACADB9' }} />}>
+              // rightIcon={<CloseButton aria-label="Close modal" sx={{ color: '#ACADB9' }} />}
+            >
               Сбросить все
             </Button>
           </Flex>

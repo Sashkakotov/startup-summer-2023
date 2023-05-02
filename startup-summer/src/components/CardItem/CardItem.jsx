@@ -1,8 +1,9 @@
-import { Card, Text, Group } from '@mantine/core';
+import { Card, Text, Group, Stack, Flex } from '@mantine/core';
 
 import StarButton from '../StarButton/StarButton';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Location from '../Location/Location';
 
 const CardItem = ({ card, checkedCards, setCheckedCards }) => {
   const [checked, setChecked] = useState(checkedCards.some((el) => el.id === card.id));
@@ -16,23 +17,63 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
     }
   };
   return (
-    <Card shadow="sm" p="lg" radius="md" withBorder sx={{ maxWidth: '773px' }}>
-      <Group position="apart" mt="md" mb="xs">
-        <Text weight={500}>{card.profession}</Text>
-        <StarButton checked={checked} checkboxHandler={checkboxHandler} />
-      </Group>
-      <Group>
-        <Text size="sm" color="dimmed">
-          {`${card.payment_from} ${card.payment_to} ${card.currency}`}
-        </Text>
-        <Text size="sm" color="dimmed">
-          {card.type_of_work.title}
-        </Text>
-      </Group>
+    <Card
+      p="lg"
+      radius="12px"
+      withBorder={'1px solid #EAEBED;'}
+      sx={{
+        maxWidth: '773px',
+        width: '100%',
+        padding: '1.3rem !important',
+        paddingLeft: '1.5rem !important'
+      }}>
+      <Flex justify="space-between" width={'80%'}>
+        <Stack
+          spacing={'12px'}
+          sx={{
+            width: '90%'
+          }}>
+          <Group position="apart">
+            <Text
+              mt={'2px'}
+              mb={'1px'}
+              fs={'normal'}
+              fw={'600'}
+              size={'20px'}
+              lh={'24px'}
+              color="#5E96FC"
+              truncate={'end'}>
+              {card.profession}
+            </Text>
+          </Group>
+          <Group spacing={'12px'}>
+            <Text fs={'normal'} fw={'600'} size={'16px'} lh={'20px'} color="#232134">
+              {`з/п ${
+                card.payment_from > 0 || card.payment_to > 0
+                  ? (card.payment_from > 0
+                      ? (card.payment_to > 0 ? '' : 'от  ') + card.payment_from
+                      : '') +
+                    (card.payment_to > 0
+                      ? card.payment_from > 0
+                        ? ' - ' + card.payment_to
+                        : card.payment_to
+                      : '') +
+                    card.currency
+                  : 'По договоренности'
+              }`}
+            </Text>
+            <Text ff={'Poppins'} fs={'normal'} fw={'400'} size={'20px'} lh={'21px'} color="#7B7C88">
+              &#8226;
+            </Text>
+            <Text fs={'normal'} fw={'400'} size={'16px'} lh={'20px'} color="#232134">
+              {card.type_of_work.title}
+            </Text>
+          </Group>
 
-      <Text size="sm" color="dimmed">
-        {card.town.genitive}
-      </Text>
+          <Location cardTitle={card.town.title} />
+        </Stack>
+        <StarButton checked={checked} checkboxHandler={checkboxHandler} />
+      </Flex>
     </Card>
   );
 };
