@@ -7,7 +7,7 @@ import Error from './pages/Error';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
 import Navbara from './components/Navbar/Navbar';
-import Vacancy from './pages/Vacany';
+import Vacancy from './pages/Vacancy';
 import authorization from './API/authorization/authorization';
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
 
   const getToken = async () => {
     const token = await authorization();
-    console.log(token);
     if (token) {
       setToken(token);
     }

@@ -4,11 +4,11 @@ import StarButton from '../StarButton/StarButton';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Location from '../Location/Location';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CardItem = ({ card, checkedCards, setCheckedCards }) => {
   const [checked, setChecked] = useState(checkedCards.some((el) => el.id === card.id));
-
+  const navigate = useNavigate();
   const checkboxHandler = () => {
     setChecked(!checked);
     if (!checked) {
@@ -17,12 +17,13 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
       setCheckedCards(checkedCards.filter((el) => el.id !== card.id));
     }
   };
+  const handleClick = () => {
+    localStorage.setItem('openCard', JSON.stringify(card));
+    navigate(`/vacancy/${card.id}`);
+  };
   return (
     <Card
-      component={Link}
-      to={`/vacancy/${card.id}`}
-      onClick={() => localStorage.setItem('openCard', JSON.stringify(card))}
-      p="lg"
+      onClick={handleClick}
       radius="12px"
       withBorder={'1px solid #EAEBED;'}
       sx={{
@@ -73,7 +74,6 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
               {card.type_of_work.title}
             </Text>
           </Group>
-
           <Location cardTitle={card.town.title} />
         </Stack>
         <StarButton checked={checked} checkboxHandler={checkboxHandler} />

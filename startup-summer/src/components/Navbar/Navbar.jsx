@@ -7,14 +7,11 @@ import {
   Burger,
   Paper,
   Transition,
-  rem,
   Text,
   px
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { MantineLogo } from '@mantine/ds';
 import { Link } from 'react-router-dom';
-import Chevron from '/chevron.svg';
 import Logo from '../Logo/Logo';
 
 const HEADER_HEIGHT = px(84);
@@ -102,10 +99,11 @@ const links = [
 const HeaderResponsive = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(
-    links.filter((el) => el.link === String(location.pathname))[0].link
+    location.pathname === links[0].link || location.pathname === links[1].link
+      ? links.filter((el) => el.link === String(location.pathname))[0].link
+      : links[0].link
   );
   const { classes, cx } = useStyles();
-
   const items = links.map((link) => (
     <Text
       component={Link}

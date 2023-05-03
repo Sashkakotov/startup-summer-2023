@@ -1,10 +1,9 @@
 import { TextInput, ActionIcon, useMantineTheme, Button } from '@mantine/core';
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue }) => {
-  const theme = useMantineTheme();
-
   const handleChange = (e) => {
     setSearchInputValue(e.target.value);
   };

@@ -2,11 +2,11 @@ import { Flex, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
-import authorization from '../API/authorization/authorization';
 import getVacancies from '../API/Getvacancies/Getvacancies';
 import Cardlist from '../components/CardList/CardList';
 import getIndustryList from '../API/getIndustryList/getIndustryList';
 import { useForm } from '@mantine/form';
+import PropTypes from 'prop-types';
 // import { useDispatch, useSelector } from 'react-redux';
 // import fetchCards from '../store/reducers/fetchCards';
 
@@ -118,5 +118,9 @@ const Home = ({ token }) => {
       </Flex>
     </main>
   );
+};
+
+Home.propTypes = {
+  token: PropTypes.string.isRequired
 };
 export default Home;
