@@ -23,6 +23,9 @@ const Favorites = () => {
         />
       )}
       <Pagination
+        sx={{
+          margin: '40px 0px 44px 0px'
+        }}
         onChange={setPage}
         boundaries={0}
         siblings={1}

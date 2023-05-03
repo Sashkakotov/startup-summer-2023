@@ -96,7 +96,7 @@ const Home = ({ token }) => {
           handleFormSubmit={handleFormSubmit}
           setFormValues={setFormValues}
         />
-        <Stack sx={{ maxWidth: '773px', width: '100%' }}>
+        <Stack align="center" sx={{ maxWidth: '773px', width: '100%' }}>
           <SearchInput
             handleSearchInput={handleSearchInput}
             searchInputValue={searchInputValue}
@@ -107,6 +107,9 @@ const Home = ({ token }) => {
           )}
           {cards.length > 0 && (
             <Pagination
+              sx={{
+                margin: '40px 0px 44px 0px'
+              }}
               onChange={setPage}
               boundaries={0}
               siblings={1}
