@@ -1,6 +1,10 @@
 const getVacancies = async (token, page, search = '', paymentFrom, paymentTo, industry) => {
   try {
-    const url = `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies/?count=4&page=${page}&published=1&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}`;
+    const url = `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies/?count=4&page=${
+      page - 1
+    }&published=1&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}&no_agreement=${
+      paymentTo || paymentFrom ? '1' : '0'
+    }`;
     console.log(url);
     const response = await fetch(url, {
       method: 'GET',
@@ -13,7 +17,7 @@ const getVacancies = async (token, page, search = '', paymentFrom, paymentTo, in
     });
     const result = await response.json();
     console.log('Vacancies', result);
-    return result.objects;
+    return result;
   } catch (err) {
     console.log(err);
   }

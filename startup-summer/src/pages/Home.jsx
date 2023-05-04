@@ -16,7 +16,7 @@ const Home = ({ token }) => {
 
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [totalPage, setTotalPage] = useState(1);
   const [loader, setLoader] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [industriesList, setIndustriesList] = useState([]);
@@ -55,7 +55,8 @@ const Home = ({ token }) => {
       formValues.industry
     );
     if (res) {
-      setCards(res);
+      setCards(res.objects);
+      setTotalPage(res.total);
     }
     setLoader(false);
   };
@@ -107,6 +108,11 @@ const Home = ({ token }) => {
           )}
           {cards.length > 0 && (
             <Pagination
+              styles={{
+                dots: {
+                  display: 'none'
+                }
+              }}
               sx={{
                 margin: '40px 0px 44px 0px'
               }}
@@ -114,7 +120,7 @@ const Home = ({ token }) => {
               boundaries={0}
               siblings={1}
               defaultValue={1}
-              total={125}
+              total={Math.ceil(totalPage / 4)}
             />
           )}
         </Stack>

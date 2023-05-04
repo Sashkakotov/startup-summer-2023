@@ -7,7 +7,7 @@ const Favorites = () => {
   const [checkedCards, setCheckedCards] = useState(
     localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []
   );
-
+  console.log('FAVORITES', checkedCards);
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
@@ -16,21 +16,26 @@ const Favorites = () => {
     <main className="main">
       {checkedCards.length > 0 && (
         <Cardlist
-          cards={checkedCards}
-          isFavorite={true}
+          cards={checkedCards.slice((page - 1) * 4, page * 4)}
           checkedCards={checkedCards}
           setCheckedCards={setCheckedCards}
         />
       )}
       <Pagination
+        styles={{
+          dots: {
+            display: 'none'
+          }
+        }}
         sx={{
           margin: '40px 0px 44px 0px'
         }}
         onChange={setPage}
         boundaries={0}
         siblings={1}
-        defaultValue={1}
-        total={checkedCards.length}
+        // defaultValue={1}
+        total={checkedCards.length / 4}
+        value={page}
       />
     </main>
   );
