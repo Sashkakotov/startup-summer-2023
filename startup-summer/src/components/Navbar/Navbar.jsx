@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   createStyles,
   Header,
@@ -11,7 +11,7 @@ import {
   px
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 
 const HEADER_HEIGHT = px(84);
@@ -103,6 +103,14 @@ const HeaderResponsive = () => {
       ? links.filter((el) => el.link === String(location.pathname))[0].link
       : links[0].link
   );
+  const currentLocation = useLocation();
+  useEffect(() => {
+    setActive(
+      location.pathname === links[0].link || location.pathname === links[1].link
+        ? links.filter((el) => el.link === String(location.pathname))[0].link
+        : links[0].link
+    );
+  }, [currentLocation]);
   const { classes, cx } = useStyles();
   const items = links.map((link) => (
     <Text
