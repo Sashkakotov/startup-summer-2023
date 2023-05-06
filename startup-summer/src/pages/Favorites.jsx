@@ -23,6 +23,7 @@ const Favorites = () => {
             setCheckedCards={setCheckedCards}
           />
           <Pagination
+            color="#5E96FC"
             styles={{
               dots: {
                 display: 'none'

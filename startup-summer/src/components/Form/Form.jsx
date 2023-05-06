@@ -1,9 +1,11 @@
 import { Button, Box, Text, NumberInput, Select, Flex, Stack } from '@mantine/core';
+import { useState } from 'react';
 import { ChevronDown } from 'tabler-icons-react';
 
 // import IndustryInput from '../IndustryInput/IndustryInput';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
+  const [opened, setOpened] = useState(false);
   return (
     <Box
       sx={{
@@ -68,13 +70,24 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               placeholder="Выберите отрасль"
               radius={8}
               rightSection={<ChevronDown size={24} strokeWidth={1.5} color={'#ACADB9'} />}
+              onDropdownOpen={() => setOpened(true)}
+              onDropdownClose={() => setOpened(false)}
               styles={{
                 input: {
                   height: '42px'
                 },
                 rightSection: {
                   width: '48px',
-                  pointerEvents: 'none'
+                  pointerEvents: 'none',
+                  transform: opened ? 'rotate(180deg)' : 'rotate(0deg)',
+                  '& svg': {
+                    stroke: opened ? '#5E96FC' : '#ACADB9'
+                  }
+                },
+                item: {
+                  '&:hover': {
+                    background: '#DEECFF'
+                  }
                 }
               }}
             />
@@ -92,7 +105,8 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               styles={{
                 input: {
                   height: '42px',
-                  borderRadius: '8px'
+                  borderRadius: '8px',
+                  caretColor: '#5E96FC'
                 },
                 controlUp: {
                   border: '0px',
@@ -116,7 +130,8 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               styles={{
                 input: {
                   height: '42px',
-                  borderRadius: '8px'
+                  borderRadius: '8px',
+                  caretColor: '#5E96FC'
                 },
                 controlUp: {
                   border: '0px',
@@ -143,7 +158,13 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               height: '40px',
               marginTop: '5px',
               borderRadius: '8px',
-              background: '#5E96FC'
+              background: '#5E96FC',
+              '&:hover': {
+                background: '#92C1FF'
+              },
+              '&:active': {
+                background: '#3B7CD3'
+              }
             }}
             type="submit">
             Применить

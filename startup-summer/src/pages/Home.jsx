@@ -31,7 +31,6 @@ const Home = ({ token }) => {
       paymentFrom: '',
       paymentTo: ''
     },
-
     validate: {
       // email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email')
     }
@@ -109,6 +108,11 @@ const Home = ({ token }) => {
           {cards.length > 0 && (
             <Pagination
               styles={{
+                control: {
+                  '&[data-active]': {
+                    background: '#5E96FC'
+                  }
+                },
                 dots: {
                   display: 'none'
                 }

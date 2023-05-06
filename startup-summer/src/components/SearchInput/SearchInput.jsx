@@ -19,7 +19,8 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
             input: {
               height: '48px',
               borderRadius: '8px',
-              border: '1px solid #EAEBED'
+              border: '1px solid #EAEBED',
+              caretColor: '#5E96FC'
             },
             rightSection: {
               width: '107px'
@@ -34,11 +35,17 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
                 height: '32px',
                 background: '#5E96FC',
                 borderRadius: '8px',
-                border: '1px solid #EAEBED',
+                border: 'none',
                 fontWeight: '500',
                 fontSize: '14px',
                 lineHeight: '21px',
-                textAlign: 'center'
+                textAlign: 'center',
+                '&:hover': {
+                  background: '#92C1FF'
+                },
+                '&:active': {
+                  background: '#3B7CD3'
+                }
               }}>
               Поиск
             </Button>
