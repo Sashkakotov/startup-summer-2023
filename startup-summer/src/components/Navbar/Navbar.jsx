@@ -92,6 +92,7 @@ const links = [
   { link: '/', label: 'Поиск Вакансий' },
   { link: '/favorites', label: 'Избранное' }
 ];
+
 const HeaderResponsive = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(
@@ -130,9 +131,7 @@ const HeaderResponsive = () => {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
-
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>

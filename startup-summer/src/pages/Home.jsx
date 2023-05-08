@@ -1,4 +1,4 @@
-import { Flex, Loader, Pagination, Stack } from '@mantine/core';
+import { Box, Flex, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
@@ -30,9 +30,6 @@ const Home = ({ token }) => {
       industry: '',
       paymentFrom: '',
       paymentTo: ''
-    },
-    validate: {
-      // email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email')
     }
   });
 
@@ -88,7 +85,6 @@ const Home = ({ token }) => {
   };
   return (
     <main className="main">
-      {loader && <Loader />}
       <Flex align={'flex-start'} sx={{ maxWidth: '1116px', width: '100%' }}>
         <Form
           industriesList={industriesList}
@@ -102,9 +98,17 @@ const Home = ({ token }) => {
             searchInputValue={searchInputValue}
             setSearchInputValue={setSearchInputValue}
           />
-          {cards.length > 0 && (
-            <Cardlist cards={cards} checkedCards={checkedCards} setCheckedCards={setCheckedCards} />
-          )}
+          <Box sx={{ position: 'relative', minHeight: '594px' }}>
+            {loader && <Loader sx={{ position: 'absolute', top: '47%', zIndex: '10' }} />}
+            {cards.length > 0 && (
+              <Cardlist
+                cards={cards}
+                checkedCards={checkedCards}
+                setCheckedCards={setCheckedCards}
+              />
+            )}
+          </Box>
+
           {cards.length > 0 && (
             <Pagination
               styles={{

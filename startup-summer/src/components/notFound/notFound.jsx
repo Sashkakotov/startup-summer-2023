@@ -20,9 +20,15 @@ const NotFound = () => {
         sx={{
           height: '42px',
           width: '164px',
-          background: '#DEECFF',
+          background: '#DEECFF !important',
           borderRadius: '8px',
-          color: '#3B7CD3'
+          color: '#3B7CD3',
+          '&:hover': {
+            color: '#FFFFFF'
+          },
+          '&:active': {
+            color: '#3B7CD3'
+          }
         }}
         component={Link}
         to={'/'}>

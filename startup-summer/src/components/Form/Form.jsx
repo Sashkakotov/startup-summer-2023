@@ -1,177 +1,69 @@
 import { Button, Box, Text, NumberInput, Select, Flex, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { ChevronDown } from 'tabler-icons-react';
-
-// import IndustryInput from '../IndustryInput/IndustryInput';
+import ResetButton from '../ResetButton/ResetButton';
+import PropTypes from 'prop-types';
+import UI from '../../constants/UI';
+import { numberInputStyles, selectStyles, useStyles } from './styles';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
   const [opened, setOpened] = useState(false);
+  const { classes } = useStyles();
   return (
-    <Box
-      sx={{
-        maxWidth: '315px',
-        width: '100%',
-        background: '#FFFFFF',
-        border: '1px solid #EAEBED',
-        borderRadius: '12px',
-        marginLeft: '0px !important',
-        marginRight: '28px !important'
-      }}
-      mx="auto">
+    <Box className={classes.formBox} mx="auto">
       <form onSubmit={form.onSubmit(handleFormSubmit)}>
-        <Stack sx={{ maxWidth: '275px', width: '100%', margin: '20px  auto 20px' }}>
-          <Flex justify={'space-between'} sx={{ height: '20px' }} align={'center'}>
+        <Stack className={classes.stack}>
+          <Flex className={classes.titleFlex}>
             <Text fw={700} size={20}>
-              Фильтры
+              {UI.filters}
             </Text>
-            <Button
-              variant="subtle"
-              compact
-              title="Settings"
-              sx={{
-                maxWidth: '115px',
-                width: '100%',
-                height: '20px',
-                color: '#ACADB9',
-                fontSize: '14px',
-                padding: '0px'
-              }}
-              styles={{
-                rightIcon: {
-                  color: '#ACADB9',
-                  width: '16px',
-                  height: '16px',
-                  marginLeft: '0px'
-                }
-              }}
-              onClick={() => {
-                form.values.industry = '';
-                form.values.paymentFrom = '';
-                form.values.paymentTo = '';
-                setFormValues({ industry: '', paymentFrom: '', paymentTo: '' });
-              }}
-              // rightIcon={<CloseButton aria-label="Close modal" sx={{ color: '#ACADB9' }} />}
-            >
-              Сбросить все
-            </Button>
+            <ResetButton form={form} setFormValues={setFormValues} />
           </Flex>
 
-          <Stack
-            sx={{
-              marginTop: '13px',
-              gap: '5px'
-            }}>
+          <Stack className={classes.industryStack}>
             <Text fw={700} align="start">
-              Отрасль
+              {UI.industry}
             </Text>
             <Select
               {...form.getInputProps('industry')}
               data={industriesList}
-              placeholder="Выберите отрасль"
+              placeholder={UI.chooseIndustry}
               radius={8}
               rightSection={<ChevronDown size={24} strokeWidth={1.5} color={'#ACADB9'} />}
               onDropdownOpen={() => setOpened(true)}
               onDropdownClose={() => setOpened(false)}
-              styles={{
-                input: {
-                  height: '42px'
-                },
-                rightSection: {
-                  width: '48px',
-                  pointerEvents: 'none',
-                  transform: opened ? 'rotate(180deg)' : 'rotate(0deg)',
-                  '& svg': {
-                    stroke: opened ? '#5E96FC' : '#ACADB9'
-                  }
-                },
-                item: {
-                  '&:hover': {
-                    background: '#DEECFF'
-                  }
-                }
-              }}
+              styles={selectStyles(opened)}
             />
           </Stack>
-          <Stack
-            sx={{
-              gap: '7px'
-            }}>
+          <Stack className={classes.numberInputsStack}>
             <Text fw={700} align="start">
-              Оклад
+              {UI.salary}
             </Text>
             <NumberInput
-              placeholder="От"
+              placeholder={UI.placeholderFrom}
+              min={0}
               {...form.getInputProps('paymentFrom')}
-              styles={{
-                input: {
-                  height: '42px',
-                  borderRadius: '8px',
-                  caretColor: '#5E96FC'
-                },
-                controlUp: {
-                  border: '0px',
-                  color: '#ACADB9'
-                },
-                controlDown: {
-                  border: '0px',
-                  color: '#ACADB9'
-                },
-                rightSection: {
-                  height: '24px',
-                  top: '6px',
-                  right: '5px'
-                }
-              }}
-              // rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+              styles={numberInputStyles}
             />
             <NumberInput
-              placeholder="До"
+              placeholder={UI.placeholderTo}
+              min={form.values.paymentFrom ? form.values.paymentFrom : 0}
               {...form.getInputProps('paymentTo')}
-              styles={{
-                input: {
-                  height: '42px',
-                  borderRadius: '8px',
-                  caretColor: '#5E96FC'
-                },
-                controlUp: {
-                  border: '0px',
-                  color: '#ACADB9'
-                },
-                controlDown: {
-                  border: '0px',
-                  color: '#ACADB9'
-                },
-                rightSection: {
-                  height: '24px',
-                  top: '6px',
-                  right: '5px'
-                }
-              }}
-              // rightSection={<Selector width={12} height={26} strokeWidth={1.5} color={'#ACADB9'} />}
+              styles={numberInputStyles}
             />
           </Stack>
-
-          <Button
-            sx={{
-              maxWidth: '275px',
-              width: '100%',
-              height: '40px',
-              marginTop: '5px',
-              borderRadius: '8px',
-              background: '#5E96FC',
-              '&:hover': {
-                background: '#92C1FF'
-              },
-              '&:active': {
-                background: '#3B7CD3'
-              }
-            }}
-            type="submit">
-            Применить
+          <Button className={classes.submitButton} type="submit">
+            {UI.aplly}
           </Button>
         </Stack>
       </form>
     </Box>
   );
+};
+Form.propTypes = {
+  industriesList: PropTypes.array.isRequired,
+  form: PropTypes.object.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+  setFormValues: PropTypes.func.isRequired
 };
 export default Form;
