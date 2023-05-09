@@ -1,8 +1,8 @@
 import { Pagination } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Cardlist from '../components/CardList/CardList';
-import NotFoundPage from '../components/notFoundPage/notFound';
 import { paginationRootStyles, paginationStyles } from './styles/FavoritesStyles';
+import { Navigate } from 'react-router-dom';
 
 const Favorites = () => {
   const [page, setPage] = useState(1);
@@ -14,9 +14,13 @@ const Favorites = () => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
 
+  if (checkedCards.length === 0) {
+    return <Navigate to="/emptystate" />;
+  }
+
   return (
     <main className="main">
-      {checkedCards.length > 0 ? (
+      {checkedCards.length > 0 && (
         <>
           <Cardlist
             cards={checkedCards.slice((page - 1) * 4, page * 4)}
@@ -33,8 +37,6 @@ const Favorites = () => {
             value={page}
           />
         </>
-      ) : (
-        <NotFoundPage />
       )}
     </main>
   );

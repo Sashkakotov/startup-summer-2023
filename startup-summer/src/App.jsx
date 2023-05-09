@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Navbara from './components/Navbar/Navbar';
 import Vacancy from './pages/Vacancy';
 import authorization from './API/authorization/authorization';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const [token, setToken] = useState('');
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home token={token} />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/emptystate" element={<NotFoundPage />} />
         <Route path="/vacancy/:id" element={<Vacancy token={token} />} />
         <Route path="*" element={<Error />} />
       </Routes>

@@ -8,8 +8,10 @@ import getIndustryList from '../API/getIndustryList/getIndustryList';
 import { useForm } from '@mantine/form';
 import PropTypes from 'prop-types';
 import { paginationStyles, useStyles } from './styles/HomeStyles';
+import { useNavigate } from 'react-router-dom';
 
 const Home = ({ token }) => {
+  const navigate = useNavigate();
   const { classes } = useStyles();
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
@@ -47,10 +49,14 @@ const Home = ({ token }) => {
       String(formValues.paymentTo),
       formValues.industry
     );
+    if (cardsArray.objects.length === 0) {
+      navigate('/emptystate');
+    }
     if (cardsArray) {
       setCards(cardsArray.objects);
       setTotalPage(cardsArray.total);
     }
+
     setLoader(false);
   };
 
@@ -80,6 +86,7 @@ const Home = ({ token }) => {
   const handleFormSubmit = () => {
     setFormValues(form.values);
   };
+
   return (
     <main className="main">
       <Flex className={classes.flex}>
@@ -95,6 +102,7 @@ const Home = ({ token }) => {
             searchInputValue={searchInputValue}
             setSearchInputValue={setSearchInputValue}
           />
+
           <Box className={classes.box}>
             {loader && <Loader className={classes.loader} />}
             {cards.length > 0 && (
