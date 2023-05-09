@@ -9,6 +9,7 @@ import { numberInputStyles, selectStyles, useStyles } from './styles';
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
+
   return (
     <Box className={classes.formBox} mx="auto">
       <form onSubmit={form.onSubmit(handleFormSubmit)}>
@@ -60,10 +61,12 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
     </Box>
   );
 };
+
 Form.propTypes = {
   industriesList: PropTypes.array.isRequired,
   form: PropTypes.object.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   setFormValues: PropTypes.func.isRequired
 };
+
 export default Form;

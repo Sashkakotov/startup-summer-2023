@@ -1,7 +1,6 @@
-import { TextInput, ActionIcon, useMantineTheme, Button, Box } from '@mantine/core';
-import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
+import { TextInput, Button, Box } from '@mantine/core';
+import { IconSearch } from '@tabler/icons-react';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
 const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue }) => {
   const handleChange = (e) => {
@@ -54,10 +53,14 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
           onChange={handleChange}
           placeholder="Введите название вакансии"
           rightSectionWidth={42}
-          // {...props}
         />
       </form>
     </Box>
   );
+};
+SearchInput.propTypes = {
+  handleSearchInput: PropTypes.func.isRequired,
+  searchInputValue: PropTypes.string.isRequired,
+  setSearchInputValue: PropTypes.func.isRequired
 };
 export default SearchInput;
