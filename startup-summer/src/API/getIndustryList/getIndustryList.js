@@ -1,7 +1,6 @@
 const getIndustryList = async (token) => {
   try {
     const url = `https://startup-summer-2023-proxy.onrender.com/2.0/catalogues/`;
-    console.log(url);
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -18,7 +17,7 @@ const getIndustryList = async (token) => {
     }));
     return industriesList;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 export default getIndustryList;

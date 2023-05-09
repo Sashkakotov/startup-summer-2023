@@ -1,33 +1,12 @@
-import { Checkbox, createStyles } from '@mantine/core';
+import { Checkbox } from '@mantine/core';
 import PropTypes from 'prop-types';
-import Star from '../Star/Star';
+import Star from './StarIcon/Star';
+import { inputStyles, useStyles } from './styles';
 
 const CheckboxIcon = ({ className }) => <Star className={className} />;
 
-const useStyles = createStyles((theme, checked) => ({
-  icon: {
-    '& svg': {
-      fill: checked ? '#5E96FC' : 'none',
-      position: 'absolute',
-      top: '0rem',
-      right: '0rem',
-      left: '0rem',
-      bottom: '0rem',
-      pointerEvents: 'none'
-    },
-    '& path': {
-      stroke: checked ? '#5E96FC' : '#ACADB9'
-    },
-    '&:hover': {
-      '& path': {
-        stroke: '#5E96FC'
-      }
-    }
-  }
-}));
-
 const StarButton = ({ checked, checkboxHandler }) => {
-  const { classes } = useStyles(checked);
+  const { classes, cx } = useStyles(checked);
   return (
     <>
       <Checkbox
@@ -36,20 +15,8 @@ const StarButton = ({ checked, checkboxHandler }) => {
         checked={checked}
         onClick={(e) => e.stopPropagation()}
         onChange={checkboxHandler}
-        className={classes.icon}
-        sx={{
-          // pointerEvents: 'none',
-          marginTop: '2px',
-          marginRight: '6px'
-        }}
-        styles={() => ({
-          input: {
-            border: 'none',
-            '&:checked': {
-              backgroundColor: 'white'
-            }
-          }
-        })}
+        className={cx(classes.icon, classes.root)}
+        styles={inputStyles}
       />
     </>
   );

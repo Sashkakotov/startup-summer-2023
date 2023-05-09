@@ -7,13 +7,10 @@ import Cardlist from '../components/CardList/CardList';
 import getIndustryList from '../API/getIndustryList/getIndustryList';
 import { useForm } from '@mantine/form';
 import PropTypes from 'prop-types';
-// import { useDispatch, useSelector } from 'react-redux';
-// import fetchCards from '../store/reducers/fetchCards';
+import { paginationStyles, useStyles } from './styles/HomeStyles';
 
 const Home = ({ token }) => {
-  // const dispatch = useDispatch();
-  // const { cards, isLoading, error } = useSelector((state) => state.cardReducer);
-
+  const { classes } = useStyles();
   const [cards, setCards] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
@@ -42,7 +39,7 @@ const Home = ({ token }) => {
 
   const getVacanciesArray = async (token) => {
     setLoader(true);
-    const res = await getVacancies(
+    const cardsArray = await getVacancies(
       token,
       page,
       searchInputValue,
@@ -50,9 +47,9 @@ const Home = ({ token }) => {
       String(formValues.paymentTo),
       formValues.industry
     );
-    if (res) {
-      setCards(res.objects);
-      setTotalPage(res.total);
+    if (cardsArray) {
+      setCards(cardsArray.objects);
+      setTotalPage(cardsArray.total);
     }
     setLoader(false);
   };
@@ -85,21 +82,21 @@ const Home = ({ token }) => {
   };
   return (
     <main className="main">
-      <Flex align={'flex-start'} sx={{ maxWidth: '1116px', width: '100%' }}>
+      <Flex className={classes.flex}>
         <Form
           industriesList={industriesList}
           form={form}
           handleFormSubmit={handleFormSubmit}
           setFormValues={setFormValues}
         />
-        <Stack align="center" sx={{ maxWidth: '773px', width: '100%' }}>
+        <Stack className={classes.stack}>
           <SearchInput
             handleSearchInput={handleSearchInput}
             searchInputValue={searchInputValue}
             setSearchInputValue={setSearchInputValue}
           />
-          <Box sx={{ position: 'relative', minHeight: '594px' }}>
-            {loader && <Loader sx={{ position: 'absolute', top: '47%', zIndex: '10' }} />}
+          <Box className={classes.box}>
+            {loader && <Loader className={classes.loader} />}
             {cards.length > 0 && (
               <Cardlist
                 cards={cards}
@@ -108,22 +105,10 @@ const Home = ({ token }) => {
               />
             )}
           </Box>
-
           {cards.length > 0 && (
             <Pagination
-              styles={{
-                control: {
-                  '&[data-active]': {
-                    background: '#5E96FC'
-                  }
-                },
-                dots: {
-                  display: 'none'
-                }
-              }}
-              sx={{
-                margin: '40px 0px 44px 0px'
-              }}
+              styles={paginationStyles}
+              className={classes.pagination}
               onChange={setPage}
               boundaries={0}
               siblings={1}

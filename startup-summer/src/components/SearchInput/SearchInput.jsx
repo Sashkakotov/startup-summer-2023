@@ -1,63 +1,38 @@
 import { TextInput, Button, Box } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import PropTypes from 'prop-types';
+import UI from '../../constants/UI';
+import { textInputStyles, useStyles } from './styles';
 
 const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue }) => {
+  const { classes } = useStyles();
   const handleChange = (e) => {
     setSearchInputValue(e.target.value);
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: '773px' }}>
+    <Box className={classes.inputBox}>
       <form onSubmit={handleSearchInput}>
         <TextInput
           icon={<IconSearch size="1.1rem" stroke={1.5} />}
           radius="xl"
-          sx={{ width: '100%', maxWidth: '773px' }}
-          styles={{
-            input: {
-              height: '48px',
-              borderRadius: '8px',
-              border: '1px solid #EAEBED',
-              caretColor: '#5E96FC'
-            },
-            rightSection: {
-              width: '107px'
-            }
-          }}
+          className={classes.input}
+          styles={textInputStyles}
           rightSection={
-            <Button
-              type={'submit'}
-              variant="filled"
-              sx={{
-                width: '83px',
-                height: '32px',
-                background: '#5E96FC',
-                borderRadius: '8px',
-                border: 'none',
-                fontWeight: '500',
-                fontSize: '14px',
-                lineHeight: '21px',
-                textAlign: 'center',
-                '&:hover': {
-                  background: '#92C1FF'
-                },
-                '&:active': {
-                  background: '#3B7CD3'
-                }
-              }}>
-              Поиск
+            <Button type={'submit'} variant="filled" className={classes.rightSectionButton}>
+              {UI.search}
             </Button>
           }
           value={searchInputValue}
           onChange={handleChange}
-          placeholder="Введите название вакансии"
+          placeholder={UI.enterJobTitle}
           rightSectionWidth={42}
         />
       </form>
     </Box>
   );
 };
+
 SearchInput.propTypes = {
   handleSearchInput: PropTypes.func.isRequired,
   searchInputValue: PropTypes.string.isRequired,

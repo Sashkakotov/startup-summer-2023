@@ -8,10 +8,9 @@ const authorization = async () => {
       }
     });
     const result = await response.json();
-    console.log('Token result', result);
     return result.access_token;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 export default authorization;

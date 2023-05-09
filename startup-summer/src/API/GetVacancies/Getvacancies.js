@@ -5,7 +5,6 @@ const getVacancies = async (token, page, search = '', paymentFrom, paymentTo, in
     }&published=1&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}&no_agreement=${
       paymentTo || paymentFrom ? '1' : '0'
     }`;
-    console.log(url);
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -16,10 +15,9 @@ const getVacancies = async (token, page, search = '', paymentFrom, paymentTo, in
       }
     });
     const result = await response.json();
-    console.log('Vacancies', result);
     return result;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 export default getVacancies;

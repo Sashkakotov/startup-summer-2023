@@ -12,10 +12,9 @@ const getVacancyById = async (token, vacancyId) => {
       }
     });
     const result = await response.json();
-    console.log('getVacancyById', result);
     return result;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 export default getVacancyById;
