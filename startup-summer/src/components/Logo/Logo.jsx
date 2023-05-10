@@ -1,11 +1,11 @@
 import { Flex, Text } from '@mantine/core';
-import LogoImage from '/Union.svg';
 import { LOGO } from '../../constants/constants';
+import LogoImage from './LogoImage/LogoImage';
 
 const Logo = () => {
   return (
     <Flex gap={12}>
-      <img src={LogoImage} />
+      <LogoImage />
       <Text size={24} fw={600} ff={'Poppins'} fs={'normal'} lh={'36px'} color="#232134">
         {LOGO}
       </Text>
