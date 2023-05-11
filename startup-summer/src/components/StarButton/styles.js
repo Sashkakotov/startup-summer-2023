@@ -28,6 +28,7 @@ export const useStyles = createStyles((theme, checked) => ({
 
 export const inputStyles = () => ({
   input: {
+    cursor: 'pointer',
     border: 'none',
     '&:checked': {
       backgroundColor: 'white'

@@ -18,7 +18,7 @@ const HeaderResponsive = () => {
     setActive(
       location.pathname === links[0].link || location.pathname === links[1].link
         ? links.filter((el) => el.link === String(location.pathname))[0].link
-        : links[0].link
+        : ''
     );
   }, [currentLocation]);
   const { classes, cx } = useStyles();

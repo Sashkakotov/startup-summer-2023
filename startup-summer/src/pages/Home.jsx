@@ -9,6 +9,7 @@ import { useForm } from '@mantine/form';
 import PropTypes from 'prop-types';
 import { paginationStyles, useStyles } from './styles/HomeStyles';
 import { useNavigate } from 'react-router-dom';
+import { MAX_CARDS_ON_PAGE } from '../constants/constants';
 
 const Home = ({ token }) => {
   const navigate = useNavigate();
@@ -121,7 +122,7 @@ const Home = ({ token }) => {
               boundaries={0}
               siblings={1}
               defaultValue={1}
-              total={Math.ceil(totalPage / 4)}
+              total={Math.ceil(totalPage / MAX_CARDS_ON_PAGE)}
             />
           )}
         </Stack>

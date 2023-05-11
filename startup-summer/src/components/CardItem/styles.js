@@ -10,7 +10,8 @@ const useStyles = createStyles(() => ({
     padding: '1.3rem !important',
     paddingLeft: '1.5rem !important',
     border: '1px solid #EAEBED',
-    borderRadius: '12px'
+    borderRadius: '12px',
+    cursor: 'pointer'
   },
   stack: {
     width: '90%',

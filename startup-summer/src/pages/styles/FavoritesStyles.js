@@ -1,3 +1,14 @@
+import { createStyles } from '@mantine/core';
+
+export const useStyles = createStyles(() => ({
+  stack: {
+    maxWidth: '857px',
+    width: '100%',
+    alignItems: 'center',
+    padding: '0 28px 0 28px'
+  }
+}));
+
 export const paginationStyles = () => ({
   control: {
     '&[data-active]': {
