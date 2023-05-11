@@ -4,3 +4,8 @@
   margin: 0 auto;
   text-align: center;
 }
+@media (max-width: 935px) {
+  #root {
+    width: fit-content;
+  }
+}

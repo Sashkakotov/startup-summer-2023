@@ -28,11 +28,17 @@ const Vacancy = ({ token }) => {
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
+
   return (
     <main className="main" data-testid="main">
       {card.id && (
-        <Stack>
-          <CardItem card={card} checkedCards={checkedCards} setCheckedCards={setCheckedCards} />
+        <Stack spacing={'21px'}>
+          <CardItem
+            card={card}
+            checkedCards={checkedCards}
+            setCheckedCards={setCheckedCards}
+            isVacancy={true}
+          />
           <Text className={classes.vacancyText}>{parse(card.vacancyRichText)}</Text>
         </Stack>
       )}

@@ -28,9 +28,12 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     height: '100%',
-    maxWidth: '1116px',
+    maxWidth: '1172px',
     width: '100%',
-    padding: '0px'
+    padding: '0px 28px',
+    [`@media (max-width: 767px)`]: {
+      justifyContent: 'space-between'
+    }
   },
 
   links: {

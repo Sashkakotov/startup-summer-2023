@@ -4,7 +4,7 @@ import LogoImage from './LogoImage/LogoImage';
 
 const Logo = () => {
   return (
-    <Flex gap={12}>
+    <Flex gap={12} align={'center'}>
       <LogoImage />
       <Text size={24} fw={600} ff={'Poppins'} fs={'normal'} lh={'36px'} color="#232134">
         {LOGO}

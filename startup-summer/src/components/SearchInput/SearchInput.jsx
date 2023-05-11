@@ -1,8 +1,8 @@
 import { TextInput, Button, Box } from '@mantine/core';
-import { IconSearch } from '@tabler/icons-react';
 import PropTypes from 'prop-types';
 import UI from '../../constants/UI';
 import { textInputStyles, useStyles } from './styles';
+import Searchicon from './SearchIcon/SearchIcon';
 
 const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue }) => {
   const { classes } = useStyles();
@@ -14,7 +14,7 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
     <Box className={classes.inputBox}>
       <form onSubmit={handleSearchInput}>
         <TextInput
-          icon={<IconSearch size="1.1rem" stroke={1.5} />}
+          icon={<Searchicon />}
           radius="xl"
           className={classes.input}
           styles={textInputStyles}

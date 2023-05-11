@@ -1,4 +1,4 @@
-import { Pagination } from '@mantine/core';
+import { Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
 import Cardlist from '../components/CardList/CardList';
 import { paginationRootStyles, paginationStyles } from './styles/FavoritesStyles';
@@ -21,7 +21,8 @@ const Favorites = () => {
   return (
     <main className="main">
       {checkedCards.length > 0 && (
-        <>
+        <Stack
+          sx={{ maxWidth: '857px', width: '100%', alignItems: 'center', padding: '0 28px 0 28px' }}>
           <Cardlist
             cards={checkedCards.slice((page - 1) * 4, page * 4)}
             checkedCards={checkedCards}
@@ -36,7 +37,7 @@ const Favorites = () => {
             total={Math.ceil(checkedCards.length / 4)}
             value={page}
           />
-        </>
+        </Stack>
       )}
     </main>
   );

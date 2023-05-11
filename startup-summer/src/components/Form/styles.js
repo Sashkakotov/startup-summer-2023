@@ -8,8 +8,15 @@ export const useStyles = createStyles(() => ({
     border: '1px solid #EAEBED',
     borderRadius: '12px',
     marginLeft: '0px !important',
-    marginRight: '28px !important',
-    marginBottom: '416px !important'
+    marginRight: '0px !important',
+    marginBottom: '416px !important',
+    '@media (max-width: 600px)': {
+      marginBottom: '1rem !important',
+      marginLeft: '28px !important',
+      marginRight: '28px !important',
+      width: '-webkit-fill-available',
+      maxWidth: 'none'
+    }
   },
   submitButton: {
     maxWidth: '275px',
@@ -26,9 +33,10 @@ export const useStyles = createStyles(() => ({
     }
   },
   stack: {
-    maxWidth: '275px',
+    maxWidth: '313px',
     width: '100%',
-    margin: '18px  auto 20px'
+    margin: '18px  auto 20px',
+    padding: '0px 19px 0px 19px'
   },
   industryStack: {
     marginTop: '13px',

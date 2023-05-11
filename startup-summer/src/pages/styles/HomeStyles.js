@@ -2,18 +2,26 @@ import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles(() => ({
   flex: {
-    maxWidth: '1116px',
+    maxWidth: '1172px',
     width: '100%',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    paddingLeft: '28px',
+    '@media (max-width: 600px)': {
+      flexDirection: 'column',
+      paddingLeft: '0px'
+    }
   },
   stack: {
-    maxWidth: '773px',
+    maxWidth: '857px',
     width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '0 28px 0 28px'
   },
   box: {
     position: 'relative',
-    minHeight: '594px'
+    minHeight: '594px',
+    maxWidth: '773px',
+    width: '100%'
   },
   loader: {
     position: 'absolute',

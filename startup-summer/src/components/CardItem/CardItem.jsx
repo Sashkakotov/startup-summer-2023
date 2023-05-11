@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import useStyles from './styles';
 import RenderPaymentText from './RenderPaymentText/RenderPaymentText';
 
-const CardItem = ({ card, checkedCards, setCheckedCards }) => {
+const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
   const { classes } = useStyles();
   const [checked, setChecked] = useState(checkedCards.some((el) => el.id === card.id));
   const navigate = useNavigate();
@@ -27,16 +27,24 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
   return (
     <Card onClick={handleClick} className={classes.card}>
       <Flex className={classes.flex}>
-        <Stack className={classes.stack}>
+        <Stack className={isVacancy ? classes.stackVacancy : classes.stack}>
           <Group position="apart">
-            <Text truncate={'end'} className={classes.cardProfessionText}>
+            <Text
+              truncate={'end'}
+              className={
+                isVacancy ? classes.cardProfessionTextVacancy : classes.cardProfessionText
+              }>
               {card.profession}
             </Text>
           </Group>
           <Group spacing={'12px'}>
-            <Text className={classes.paymentText}>{RenderPaymentText(card)}</Text>
+            <Text className={isVacancy ? classes.paymentTextVacancy : classes.paymentText}>
+              {RenderPaymentText(card)}
+            </Text>
             <Text className={classes.dot}>&#8226;</Text>
-            <Text className={classes.typeOfWork}>{card.type_of_work.title}</Text>
+            <Text className={isVacancy ? classes.typeOfWorkVacancy : classes.typeOfWork}>
+              {card.type_of_work.title}
+            </Text>
           </Group>
           <Location cardTitle={card.town.title} />
         </Stack>
@@ -49,6 +57,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards }) => {
 CardItem.propTypes = {
   card: PropTypes.object.isRequired,
   checkedCards: PropTypes.array,
-  setCheckedCards: PropTypes.func
+  setCheckedCards: PropTypes.func,
+  isVacancy: PropTypes.bool
 };
 export default CardItem;

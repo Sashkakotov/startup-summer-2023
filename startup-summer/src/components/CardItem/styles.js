@@ -46,6 +46,31 @@ const useStyles = createStyles(() => ({
     fontSize: '16px',
     lineHeight: '20px',
     color: '#232134'
+  },
+  cardProfessionTextVacancy: {
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: '28px',
+    lineHeight: '34px',
+    color: '#232134'
+  },
+  paymentTextVacancy: {
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: '20px',
+    lineHeight: '20px',
+    color: '#232134'
+  },
+  typeOfWorkVacancy: {
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: '20px',
+    lineHeight: '20px',
+    color: '#232134'
+  },
+  stackVacancy: {
+    width: '90%',
+    gap: '18px'
   }
 }));
 export default useStyles;

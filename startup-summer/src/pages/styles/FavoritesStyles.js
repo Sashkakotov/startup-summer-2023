@@ -9,5 +9,5 @@ export const paginationStyles = () => ({
   }
 });
 export const paginationRootStyles = () => ({
-  margin: '105px 0px 44px 0px'
+  margin: '90px 0px 44px 0px'
 });
