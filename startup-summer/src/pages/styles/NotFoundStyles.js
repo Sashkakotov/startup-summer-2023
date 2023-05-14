@@ -9,6 +9,7 @@ const useStyles = createStyles(() => ({
   },
   text: {
     fontSize: '25px',
+    fontFamily: 'Inter-Bold-700',
     fontWeight: '700',
     fontStyle: 'normal',
     lineHeight: '29px',
@@ -19,6 +20,8 @@ const useStyles = createStyles(() => ({
     width: '164px',
     background: '#DEECFF !important',
     borderRadius: '8px',
+    fontFamily: 'Inter-SemiBold-600',
+    fontWeight: 600,
     color: '#3B7CD3',
     '&:hover': {
       color: '#FFFFFF'

@@ -21,6 +21,7 @@ const useStyles = createStyles(() => ({
     marginTop: '2px',
     marginBottom: '1px',
     fontStyle: 'normal',
+    fontFamily: 'Inter-SemiBold-600',
     fontWeight: '600',
     fontSize: '20px',
     lineHeight: '24px',
@@ -28,13 +29,14 @@ const useStyles = createStyles(() => ({
   },
   paymentText: {
     fontStyle: 'normal',
+    fontFamily: 'Inter-SemiBold-600',
     fontWeight: '600',
     fontSize: '16px',
     lineHeight: '20px',
     color: '#232134'
   },
   dot: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Poppins-SemiBold-600',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: '20px',
@@ -43,6 +45,7 @@ const useStyles = createStyles(() => ({
   },
   typeOfWork: {
     fontStyle: 'normal',
+    fontFamily: 'Inter-Regular-400',
     fontWeight: '400',
     fontSize: '16px',
     lineHeight: '20px',
@@ -50,6 +53,7 @@ const useStyles = createStyles(() => ({
   },
   cardProfessionTextVacancy: {
     fontStyle: 'normal',
+    fontFamily: 'Inter-Bold-700',
     fontWeight: '700',
     fontSize: '28px',
     lineHeight: '34px',
@@ -57,6 +61,7 @@ const useStyles = createStyles(() => ({
   },
   paymentTextVacancy: {
     fontStyle: 'normal',
+    fontFamily: 'Inter-Bold-700',
     fontWeight: '700',
     fontSize: '20px',
     lineHeight: '20px',
@@ -64,6 +69,7 @@ const useStyles = createStyles(() => ({
   },
   typeOfWorkVacancy: {
     fontStyle: 'normal',
+    fontFamily: 'Inter-Regular-400',
     fontWeight: '400',
     fontSize: '20px',
     lineHeight: '20px',

@@ -58,7 +58,8 @@ const useStyles = createStyles((theme) => ({
     textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
     fontSize: '16px',
-    fontWeight: 500,
+    fontFamily: 'Inter-Regular-400',
+    fontWeight: 400,
 
     [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,
@@ -68,6 +69,7 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     '&, &:hover': {
+      fontFamily: 'Inter-Medium-500',
       color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color
     }
   }

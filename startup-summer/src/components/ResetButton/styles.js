@@ -5,6 +5,7 @@ const resetButtonStyles = () => ({
     height: '20px',
     color: '#ACADB9',
     fontSize: '14px',
+    fontFamily: 'Inter-Medium-500',
     fontWeight: '500',
     lineHeight: '20px',
     padding: '0px',

@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
+import './fonts/Inter-Regular.ttf'; //400
+import './fonts/Inter-SemiBold.ttf'; //600
+import './fonts/Inter-Medium.ttf'; //500
+import './fonts/Inter-Bold.ttf'; //700
+import './fonts/Poppins-SemiBold.ttf'; //600
 
 import Error from './pages/Error';
 import Favorites from './pages/Favorites';

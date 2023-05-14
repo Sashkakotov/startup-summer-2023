@@ -11,6 +11,7 @@ export const useStyles = createStyles(() => ({
     background: '#5E96FC',
     borderRadius: '8px',
     border: 'none',
+    fontFamily: 'Inter-Medium-500',
     fontWeight: '500',
     fontSize: '14px',
     lineHeight: '21px',
@@ -33,7 +34,8 @@ export const textInputStyles = () => ({
     height: '48px',
     borderRadius: '8px',
     border: '1px solid #EAEBED',
-    caretColor: '#5E96FC'
+    caretColor: '#5E96FC',
+    fontFamily: 'Inter-Regular-400'
   },
   rightSection: {
     width: '107px'

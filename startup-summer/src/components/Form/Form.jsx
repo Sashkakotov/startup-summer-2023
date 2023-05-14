@@ -15,14 +15,14 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
       <form onSubmit={form.onSubmit(handleFormSubmit)}>
         <Stack className={classes.stack}>
           <Flex className={classes.titleFlex}>
-            <Text fw={700} size={20}>
+            <Text fw={700} ff={'Inter-Bold-700'} size={20}>
               {UI.filters}
             </Text>
             <ResetButton form={form} setFormValues={setFormValues} />
           </Flex>
 
           <Stack className={classes.industryStack}>
-            <Text fw={700} align="start">
+            <Text fw={700} ff={'Inter-Bold-700'} align="start">
               {UI.industry}
             </Text>
             <Select
@@ -37,7 +37,7 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
             />
           </Stack>
           <Stack className={classes.numberInputsStack}>
-            <Text fw={700} align="start">
+            <Text fw={700} ff={'Inter-Bold-700'} align="start">
               {UI.salary}
             </Text>
             <NumberInput

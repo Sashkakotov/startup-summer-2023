@@ -25,6 +25,8 @@ export const useStyles = createStyles(() => ({
     marginTop: '5px',
     borderRadius: '8px',
     background: '#5E96FC',
+    fontFamily: 'Inter-Medium-500',
+    fontWeight: '500',
     '&:hover': {
       background: '#92C1FF'
     },
@@ -54,6 +56,7 @@ export const useStyles = createStyles(() => ({
 
 export const selectStyles = (opened) => ({
   input: {
+    fontFamily: 'Inter-Regular-400',
     height: '42px'
   },
   rightSection: {
@@ -73,6 +76,7 @@ export const selectStyles = (opened) => ({
 
 export const numberInputStyles = () => ({
   input: {
+    fontFamily: 'Inter-Regular-400',
     height: '42px',
     borderRadius: '8px',
     caretColor: '#5E96FC'
