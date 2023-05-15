@@ -1,12 +1,16 @@
 import { Flex, Text } from '@mantine/core';
 import { LOGO } from '../../constants/constants';
 import LogoImage from './LogoImage/LogoImage';
+import { NavLink } from 'react-router-dom';
 
 const Logo = () => {
   return (
-    <Flex gap={12} align={'center'}>
+    <Flex gap={12} align={'center'} component={NavLink} to={'/'}>
       <LogoImage />
       <Text
+        sx={{
+          letterSpacing: '-0.5px'
+        }}
         size={24}
         fw={600}
         ff={'Poppins-SemiBold-600'}

@@ -1,11 +1,11 @@
 import { Flex, Text } from '@mantine/core';
-import LocationImage from '/location.svg';
 import PropTypes from 'prop-types';
+import LocationImage from './LocationImage/LocationImage';
 
 const Location = ({ cardTitle }) => {
   return (
-    <Flex gap={8}>
-      <img src={LocationImage} />
+    <Flex gap={10}>
+      <LocationImage />
       <Text
         fs={'normal'}
         fw={'400'}

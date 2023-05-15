@@ -39,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   links: {
     display: 'flex',
     gap: '60px',
-    marginLeft: '280px',
+    marginLeft: '281px',
     [theme.fn.smallerThan('sm')]: {
       display: 'none'
     }

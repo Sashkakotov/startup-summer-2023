@@ -3,6 +3,8 @@ import { createStyles } from '@mantine/core';
 export const useStyles = createStyles((theme, checked) => ({
   icon: {
     '& svg': {
+      width: '22px',
+      height: '22px',
       fill: checked ? '#5E96FC' : 'none',
       position: 'absolute',
       top: '0rem',

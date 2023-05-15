@@ -23,7 +23,9 @@
   src: local('Poppins-SemiBold-600'), url('./fonts/Poppins-SemiBold.ttf') format('truetype');
   font-weight: 700;
 }
-
+a {
+  text-decoration: none;
+}
 #root {
   max-width: 1440px;
   width: 100%;
