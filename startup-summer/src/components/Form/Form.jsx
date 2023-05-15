@@ -34,6 +34,7 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               onDropdownOpen={() => setOpened(true)}
               onDropdownClose={() => setOpened(false)}
               styles={selectStyles(opened)}
+              data-elem="industry-select"
             />
           </Stack>
           <Stack className={classes.numberInputsStack}>
@@ -45,15 +46,17 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               min={0}
               {...form.getInputProps('paymentFrom')}
               styles={numberInputStyles}
+              data-elem="salary-from-input"
             />
             <NumberInput
               placeholder={UI.placeholderTo}
               min={form.values.paymentFrom ? form.values.paymentFrom : 0}
               {...form.getInputProps('paymentTo')}
               styles={numberInputStyles}
+              data-elem="salary-to-input"
             />
           </Stack>
-          <Button className={classes.submitButton} type="submit">
+          <Button className={classes.submitButton} type="submit" data-elem="search-button">
             {UI.aplly}
           </Button>
         </Stack>

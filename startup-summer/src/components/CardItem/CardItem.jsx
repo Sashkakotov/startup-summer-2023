@@ -25,7 +25,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
   };
 
   return (
-    <Card onClick={handleClick} className={classes.card}>
+    <Card onClick={handleClick} className={classes.card} data-elem={`vacancy-${card.id}`}>
       <Flex className={classes.flex}>
         <Stack className={isVacancy ? classes.stackVacancy : classes.stack}>
           <Group position="apart">
@@ -48,7 +48,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
           </Group>
           <Location cardTitle={card.town.title} />
         </Stack>
-        <StarButton checked={checked} checkboxHandler={checkboxHandler} />
+        <StarButton checked={checked} checkboxHandler={checkboxHandler} id={card.id} />
       </Flex>
     </Card>
   );

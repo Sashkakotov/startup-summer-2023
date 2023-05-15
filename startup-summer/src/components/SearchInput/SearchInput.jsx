@@ -19,7 +19,11 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
           className={classes.input}
           styles={textInputStyles}
           rightSection={
-            <Button type={'submit'} variant="filled" className={classes.rightSectionButton}>
+            <Button
+              type={'submit'}
+              variant="filled"
+              className={classes.rightSectionButton}
+              data-elem="search-button">
               {UI.search}
             </Button>
           }
@@ -27,6 +31,7 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
           onChange={handleChange}
           placeholder={UI.enterJobTitle}
           rightSectionWidth={42}
+          data-elem="search-input"
         />
       </form>
     </Box>
