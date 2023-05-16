@@ -14,6 +14,7 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
     <Box className={classes.inputBox}>
       <form onSubmit={handleSearchInput}>
         <TextInput
+          iconWidth={'2.5rem'}
           icon={<Searchicon />}
           radius="xl"
           className={classes.input}

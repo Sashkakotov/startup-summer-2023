@@ -1,10 +1,12 @@
-import { Button, Box, Text, NumberInput, Select, Flex, Stack } from '@mantine/core';
+import { Button, Box, Text, Select, Flex, Stack } from '@mantine/core';
 import { useState } from 'react';
-import { ChevronDown } from 'tabler-icons-react';
 import ResetButton from '../ResetButton/ResetButton';
 import PropTypes from 'prop-types';
 import UI from '../../constants/UI';
-import { numberInputStyles, selectStyles, useStyles } from './styles';
+import { selectStyles, useStyles } from './styles';
+
+import NumberInputCustom from '../NumberInput/NumberInputCustom';
+import SelectIcon from './SelectIcon/SelectIcon';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
   const [opened, setOpened] = useState(false);
@@ -30,7 +32,7 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               data={industriesList}
               placeholder={UI.chooseIndustry}
               radius={8}
-              rightSection={<ChevronDown size={24} strokeWidth={1.5} color={'#ACADB9'} />}
+              rightSection={<SelectIcon size={24} strokeWidth={1.5} color={'#ACADB9'} />}
               onDropdownOpen={() => setOpened(true)}
               onDropdownClose={() => setOpened(false)}
               styles={selectStyles(opened)}
@@ -41,19 +43,17 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
             <Text fw={700} ff={'Inter-Bold-700'} align="start">
               {UI.salary}
             </Text>
-            <NumberInput
-              placeholder={UI.placeholderFrom}
+            <NumberInputCustom
+              form={{ ...form.getInputProps('paymentFrom') }}
+              placeholderText={UI.placeholderFrom}
+              dataElement={'salary-from-input'}
               min={0}
-              {...form.getInputProps('paymentFrom')}
-              styles={numberInputStyles}
-              data-elem="salary-from-input"
             />
-            <NumberInput
-              placeholder={UI.placeholderTo}
+            <NumberInputCustom
+              form={{ ...form.getInputProps('paymentTo') }}
+              placeholderText={UI.placeholderTo}
+              dataElement={'salary-to-input'}
               min={form.values.paymentFrom ? form.values.paymentFrom : 0}
-              {...form.getInputProps('paymentTo')}
-              styles={numberInputStyles}
-              data-elem="salary-to-input"
             />
           </Stack>
           <Button className={classes.submitButton} type="submit" data-elem="search-button">

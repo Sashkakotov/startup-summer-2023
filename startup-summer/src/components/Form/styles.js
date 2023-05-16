@@ -63,7 +63,7 @@ export const selectStyles = (opened) => ({
     width: '48px',
     pointerEvents: 'none',
     transform: opened ? 'rotate(180deg)' : 'rotate(0deg)',
-    '& svg': {
+    '& path': {
       stroke: opened ? '#5E96FC' : '#ACADB9'
     }
   },
@@ -81,39 +81,21 @@ export const numberInputStyles = () => ({
     borderRadius: '8px',
     caretColor: '#5E96FC'
   },
-  controlUp: {
-    border: '0px',
-    color: '#ACADB9',
-    backgroundColor: '#FFFFFF !important',
-    '&:hover': {
-      '& path': {
-        fill: '#92C1FF'
-      }
-    },
-    '&:active': {
-      '& path': {
-        fill: '#5E96FC'
-      }
-    }
-  },
-  controlDown: {
-    border: '0px',
-    color: '#ACADB9',
-    backgroundColor: '#FFFFFF !important',
-    '&:hover': {
-      '& path': {
-        fill: '#92C1FF'
-      }
-    },
-    '&:active': {
-      '& path': {
-        fill: '#5E96FC'
-      }
-    }
-  },
   rightSection: {
     height: '24px',
     top: '6px',
-    right: '5px'
+    right: '5px',
+    '& button': {
+      '&:hover': {
+        '& path': {
+          stroke: '#92C1FF'
+        }
+      },
+      '&:active': {
+        '& path': {
+          stroke: '#5E96FC'
+        }
+      }
+    }
   }
 });
