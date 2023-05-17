@@ -1,5 +1,6 @@
-const getVacancies = async (token, page, search = '', paymentFrom, paymentTo, industry) => {
+const getVacancies = async (token, page, search = '', formValues) => {
   try {
+    const { paymentFrom, paymentTo, industry } = formValues;
     const url = `https://startup-summer-2023-proxy.onrender.com/2.0/vacancies/?count=4&page=${
       page - 1
     }&published=1&keyword=${search}&payment_from=${paymentFrom}&payment_to=${paymentTo}&catalogues=${industry}&no_agreement=${

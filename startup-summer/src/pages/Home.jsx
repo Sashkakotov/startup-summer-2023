@@ -1,5 +1,5 @@
 import { Box, Flex, Loader, Pagination, Stack } from '@mantine/core';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import SearchInput from '../components/SearchInput/SearchInput';
 import getVacancies from '../API/Getvacancies/Getvacancies';
@@ -33,57 +33,52 @@ const Home = ({ token }) => {
     }
   });
 
-  const getIndustriesList = async () => {
+  const getIndustriesList = useCallback(async () => {
     const industriesList = await getIndustryList(token);
     if (industriesList) {
       setIndustriesList(industriesList);
     }
-  };
+  }, [token]);
 
-  const getVacanciesArray = async (token) => {
-    setLoader(true);
-    const cardsArray = await getVacancies(
-      token,
-      page,
-      searchInputValue,
-      String(formValues.paymentFrom),
-      String(formValues.paymentTo),
-      formValues.industry
-    );
-    if (cardsArray.objects.length === 0) {
-      navigate('/emptystate');
-    }
-    if (cardsArray) {
-      setCards(cardsArray.objects);
-      setTotalPage(cardsArray.total);
-    }
+  const getVacanciesArray = useCallback(
+    async (token) => {
+      setLoader(true);
+      const cardsArray = await getVacancies(token, page, searchInputValue, formValues);
+      if (cardsArray.objects.length === 0) {
+        navigate('/emptystate');
+      }
+      if (cardsArray) {
+        setCards(cardsArray.objects);
+        setTotalPage(cardsArray.total);
+      }
 
-    setLoader(false);
-  };
+      setLoader(false);
+    },
+    [formValues, navigate, page, searchInputValue]
+  );
 
   useEffect(() => {
     if (token) {
       getVacanciesArray(token);
       getIndustriesList(token);
     }
-  }, [token]);
+  }, [getIndustriesList, getVacanciesArray, token]);
 
   useEffect(() => {
     if (token) {
       getVacanciesArray(token);
     }
-  }, [formValues, page]);
+  }, [formValues, getVacanciesArray, page, token]);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
 
-  const handleSearchInput = (e) => {
-    if (token) {
-      getVacanciesArray(token);
-    }
+  const handleSearchInput = (e, state) => {
+    setSearchInputValue(state);
     e.preventDefault();
   };
+
   const handleFormSubmit = () => {
     setFormValues(form.values);
   };
@@ -98,11 +93,7 @@ const Home = ({ token }) => {
           setFormValues={setFormValues}
         />
         <Stack className={classes.stack}>
-          <SearchInput
-            handleSearchInput={handleSearchInput}
-            searchInputValue={searchInputValue}
-            setSearchInputValue={setSearchInputValue}
-          />
+          <SearchInput handleSearchInput={handleSearchInput} searchInputValue={searchInputValue} />
 
           <Box className={classes.box}>
             {loader && <Loader className={classes.loader} />}

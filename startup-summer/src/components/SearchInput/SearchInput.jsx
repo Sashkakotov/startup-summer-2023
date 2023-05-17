@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import UI from '../../constants/UI';
 import { textInputStyles, useStyles } from './styles';
 import Searchicon from './SearchIcon/SearchIcon';
+import { useState } from 'react';
 
-const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue }) => {
+const SearchInput = ({ handleSearchInput, searchInputValue }) => {
   const { classes } = useStyles();
+  const [state, setState] = useState(searchInputValue);
   const handleChange = (e) => {
-    setSearchInputValue(e.target.value);
+    setState(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    handleSearchInput(e, state);
   };
 
   return (
     <Box className={classes.inputBox}>
-      <form onSubmit={handleSearchInput}>
+      <form onSubmit={handleSubmit}>
         <TextInput
           iconWidth={'2.5rem'}
           icon={<Searchicon />}
@@ -28,7 +33,7 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
               {UI.search}
             </Button>
           }
-          value={searchInputValue}
+          value={state}
           onChange={handleChange}
           placeholder={UI.enterJobTitle}
           rightSectionWidth={42}
@@ -41,7 +46,6 @@ const SearchInput = ({ handleSearchInput, searchInputValue, setSearchInputValue 
 
 SearchInput.propTypes = {
   handleSearchInput: PropTypes.func.isRequired,
-  searchInputValue: PropTypes.string.isRequired,
-  setSearchInputValue: PropTypes.func.isRequired
+  searchInputValue: PropTypes.string.isRequired
 };
 export default SearchInput;
