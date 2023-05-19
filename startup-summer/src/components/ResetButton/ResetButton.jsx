@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
 import { Button } from '@mantine/core';
 import CloseButton from '../CloseButton/CloseButton';
-import PropTypes from 'prop-types';
+import UI from '../../constants/UIConstants';
+
 import resetButtonStyles from './styles';
-import UI from '../../constants/UI';
 
 const ResetButton = ({ form, setFormValues }) => {
   return (

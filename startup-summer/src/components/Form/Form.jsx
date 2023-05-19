@@ -1,16 +1,17 @@
-import { Button, Box, Text, Select, Flex, Stack } from '@mantine/core';
 import { useState } from 'react';
-import ResetButton from '../ResetButton/ResetButton';
 import PropTypes from 'prop-types';
-import UI from '../../constants/UI';
+
+import { Button, Box, Text, Select, Flex, Stack } from '@mantine/core';
+import SalaryNumberInput from '../SalaryNumberInput/SalaryNumberInput';
+import SelectIcon from './SelectIcon/SelectIcon';
+import ResetButton from '../ResetButton/ResetButton';
+import UI from '../../constants/UIConstants';
+
 import { selectStyles, useStyles } from './styles';
 
-import NumberInputCustom from '../NumberInput/NumberInputCustom';
-import SelectIcon from './SelectIcon/SelectIcon';
-
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
-  const [opened, setOpened] = useState(false);
   const { classes } = useStyles();
+  const [opened, setOpened] = useState(false);
 
   return (
     <Box className={classes.formBox} mx="auto">
@@ -43,13 +44,13 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
             <Text fw={700} ff={'Inter-Bold-700'} align="start">
               {UI.salary}
             </Text>
-            <NumberInputCustom
+            <SalaryNumberInput
               form={{ ...form.getInputProps('paymentFrom') }}
               placeholderText={UI.placeholderFrom}
               dataElement={'salary-from-input'}
               min={0}
             />
-            <NumberInputCustom
+            <SalaryNumberInput
               form={{ ...form.getInputProps('paymentTo') }}
               placeholderText={UI.placeholderTo}
               dataElement={'salary-to-input'}

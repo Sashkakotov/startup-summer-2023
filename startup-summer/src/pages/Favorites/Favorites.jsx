@@ -1,9 +1,11 @@
-import { Pagination, Stack } from '@mantine/core';
 import React, { useEffect, useState } from 'react';
-import Cardlist from '../components/CardList/CardList';
-import { paginationRootStyles, paginationStyles, useStyles } from './styles/FavoritesStyles';
 import { Navigate } from 'react-router-dom';
-import { MAX_CARDS_ON_PAGE } from '../constants/constants';
+
+import { Pagination, Stack } from '@mantine/core';
+import Cardlist from '../../components/CardList/CardList';
+import { MAX_CARDS_ON_PAGE } from '../../constants/constants';
+
+import { paginationRootStyles, paginationStyles, useStyles } from './styles';
 
 const Favorites = () => {
   const { classes } = useStyles();
@@ -16,13 +18,13 @@ const Favorites = () => {
     localStorage.setItem('favorites', JSON.stringify(checkedCards));
   }, [checkedCards]);
 
-  if (checkedCards.length === 0) {
+  if (!checkedCards.length) {
     return <Navigate to="/emptystate" />;
   }
 
   return (
     <main className="main">
-      {checkedCards.length > 0 && (
+      {checkedCards.length && (
         <Stack className={classes.stack}>
           <Cardlist
             cards={checkedCards.slice((page - 1) * MAX_CARDS_ON_PAGE, page * MAX_CARDS_ON_PAGE)}

@@ -19,6 +19,7 @@ export const paginationStyles = () => ({
     display: 'none'
   }
 });
+
 export const paginationRootStyles = () => ({
   margin: '90px 0px 44px 0px'
 });

@@ -1,6 +1,6 @@
-import { Flex, Text } from '@mantine/core';
 import PropTypes from 'prop-types';
-import LocationImage from './LocationImage/LocationImage';
+import { Flex, Text } from '@mantine/core';
+import LocationImage from './LocationIcon/LocationIcon';
 
 const Location = ({ cardTitle }) => {
   return (

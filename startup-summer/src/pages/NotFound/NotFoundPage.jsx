@@ -1,8 +1,10 @@
-import { Button, Stack, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import UI from '../constants/UI';
-import NotFoundImage from '../components/notFoundImage/notFoundImage';
-import useStyles from './styles/notFoundStyles';
+
+import { Button, Stack, Text } from '@mantine/core';
+import UI from '../../constants/UIConstants';
+import NotFoundImage from '../../components/notFoundImage/notFoundImage';
+
+import useStyles from './styles';
 
 const NotFoundPage = () => {
   const { classes } = useStyles();

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import './App.css';
+import Error from './pages/Error/Error';
+import Favorites from './pages/Favorites/Favorites';
+import Home from './pages/Home/Home';
+import Navbara from './components/Navbar/Navbar';
+import Vacancy from './pages/Vacancy/Vacancy';
+import authorization from './API/authorization';
+import NotFoundPage from './pages/NotFound/NotFoundPage';
+
+import './styles/App.css';
 import './fonts/Inter-Regular.ttf';
 import './fonts/Inter-SemiBold.ttf';
 import './fonts/Inter-Medium.ttf';
 import './fonts/Inter-Bold.ttf';
 import './fonts/Poppins-SemiBold.ttf';
-
-import Error from './pages/Error';
-import Favorites from './pages/Favorites';
-import Home from './pages/Home';
-import Navbara from './components/Navbar/Navbar';
-import Vacancy from './pages/Vacancy';
-import authorization from './API/authorization/authorization';
-import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const [token, setToken] = useState('');

@@ -1,16 +1,17 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import NumberInputButtons from './NumberInputIcons/NumberInputButtons';
+import NumberInputButtons from './NumberInputButtons';
 import { NumberInput } from '@mantine/core';
 import { numberInputStyles } from '../Form/styles';
 
-const NumberInputCustom = ({ form, placeholderText, dataElement, min }) => {
+const SalaryNumberInput = ({ form, placeholderText, dataElement, min }) => {
   const handlers = useRef();
 
   return (
     <NumberInput
       placeholder={placeholderText}
       min={min}
+      step={1000}
       {...form}
       styles={numberInputStyles}
       data-elem={dataElement}
@@ -19,10 +20,10 @@ const NumberInputCustom = ({ form, placeholderText, dataElement, min }) => {
     />
   );
 };
-NumberInputCustom.propTypes = {
+SalaryNumberInput.propTypes = {
   form: PropTypes.object.isRequired,
   placeholderText: PropTypes.string.isRequired,
   dataElement: PropTypes.string.isRequired,
   min: PropTypes.number.isRequired
 };
-export default NumberInputCustom;
+export default SalaryNumberInput;

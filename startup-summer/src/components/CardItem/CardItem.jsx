@@ -1,16 +1,19 @@
-import { Card, Text, Group, Stack, Flex } from '@mantine/core';
-import StarButton from '../StarButton/StarButton';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import Location from '../Location/Location';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { Card, Text, Group, Stack, Flex } from '@mantine/core';
+import Location from '../Location/Location';
+import StarButton from '../StarButton/StarButton';
+import formatPaymentText from './helper';
+
 import useStyles from './styles';
-import RenderPaymentText from './RenderPaymentText/RenderPaymentText';
 
 const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
   const { classes } = useStyles();
   const [checked, setChecked] = useState(checkedCards.some((el) => el.id === card.id));
   const navigate = useNavigate();
+
   const checkboxHandler = () => {
     setChecked(!checked);
     if (!checked) {
@@ -19,6 +22,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
       setCheckedCards(checkedCards.filter((el) => el.id !== card.id));
     }
   };
+
   const handleClick = () => {
     localStorage.setItem('openCard', JSON.stringify(card));
     navigate(`/vacancy/${card.id}`);
@@ -39,7 +43,7 @@ const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
           </Group>
           <Group spacing={'12px'}>
             <Text className={isVacancy ? classes.paymentTextVacancy : classes.paymentText}>
-              {RenderPaymentText(card)}
+              {formatPaymentText(card)}
             </Text>
             <Text className={classes.dot}>&#8226;</Text>
             <Text className={isVacancy ? classes.typeOfWorkVacancy : classes.typeOfWork}>
@@ -59,5 +63,9 @@ CardItem.propTypes = {
   checkedCards: PropTypes.array,
   setCheckedCards: PropTypes.func,
   isVacancy: PropTypes.bool
+};
+
+CardItem.defaultPropTypes = {
+  isVacancy: false
 };
 export default CardItem;

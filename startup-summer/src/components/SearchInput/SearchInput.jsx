@@ -1,16 +1,20 @@
-import { TextInput, Button, Box } from '@mantine/core';
-import PropTypes from 'prop-types';
-import UI from '../../constants/UI';
-import { textInputStyles, useStyles } from './styles';
-import Searchicon from './SearchIcon/SearchIcon';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
+import { TextInput, Button, Box } from '@mantine/core';
+import UI from '../../constants/UIConstants';
+import Searchicon from './SearchIcon/SearchIcon';
+
+import { textInputStyles, useStyles } from './styles';
 
 const SearchInput = ({ handleSearchInput, searchInputValue }) => {
   const { classes } = useStyles();
   const [state, setState] = useState(searchInputValue);
+
   const handleChange = (e) => {
     setState(e.target.value);
   };
+
   const handleSubmit = (e) => {
     handleSearchInput(e, state);
   };

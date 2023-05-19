@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import { Stack } from '@mantine/core';
 import CardItem from '../CardItem/CardItem';
-import PropTypes from 'prop-types';
 
 const Cardlist = ({ cards, checkedCards, setCheckedCards }) => {
   return (
@@ -12,7 +12,6 @@ const Cardlist = ({ cards, checkedCards, setCheckedCards }) => {
             card={card}
             checkedCards={checkedCards}
             setCheckedCards={setCheckedCards}
-            isVacancy={false}
           />
         );
       })}

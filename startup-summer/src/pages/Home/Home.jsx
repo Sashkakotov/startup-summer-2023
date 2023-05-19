@@ -1,15 +1,17 @@
-import { Box, Flex, Loader, Pagination, Stack } from '@mantine/core';
 import React, { useCallback, useEffect, useState } from 'react';
-import Form from '../components/Form/Form';
-import SearchInput from '../components/SearchInput/SearchInput';
-import getVacancies from '../API/Getvacancies/Getvacancies';
-import Cardlist from '../components/CardList/CardList';
-import getIndustryList from '../API/getIndustryList/getIndustryList';
-import { useForm } from '@mantine/form';
-import PropTypes from 'prop-types';
-import { paginationStyles, useStyles } from './styles/HomeStyles';
 import { useNavigate } from 'react-router-dom';
-import { MAX_CARDS_ON_PAGE } from '../constants/constants';
+import PropTypes from 'prop-types';
+
+import { useForm } from '@mantine/form';
+import { Box, Flex, Loader, Pagination, Stack } from '@mantine/core';
+import Form from '../../components/Form/Form';
+import SearchInput from '../../components/SearchInput/SearchInput';
+import getVacancies from '../../API/getVacancies';
+import Cardlist from '../../components/CardList/CardList';
+import getIndustryList from '../../API/getIndustryList';
+import { MAX_CARDS_ON_PAGE, MAX_PAGE } from '../../constants/constants';
+
+import { paginationStyles, useStyles } from './styles';
 
 const Home = ({ token }) => {
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ const Home = ({ token }) => {
     async (token) => {
       setLoader(true);
       const cardsArray = await getVacancies(token, page, searchInputValue, formValues);
-      if (cardsArray.objects.length === 0) {
+      if (!cardsArray.objects.length) {
         navigate('/emptystate');
       }
       if (cardsArray) {
@@ -113,7 +115,11 @@ const Home = ({ token }) => {
               boundaries={0}
               siblings={1}
               defaultValue={1}
-              total={Math.ceil(totalPage / MAX_CARDS_ON_PAGE)}
+              total={
+                Math.ceil(totalPage / MAX_CARDS_ON_PAGE) <= MAX_PAGE
+                  ? Math.ceil(totalPage / MAX_CARDS_ON_PAGE)
+                  : MAX_PAGE
+              }
             />
           )}
         </Stack>

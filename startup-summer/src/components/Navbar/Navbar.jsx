@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react';
-import { Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router-dom';
+
+import { useDisclosure } from '@mantine/hooks';
+import { Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core';
 import Logo from '../Logo/Logo';
-import { HEADER_HEIGHT, links } from '../../constants/constants';
+import { HEADER_HEIGHT, LINKS } from '../../constants/constants';
+
 import useStyles from './styles';
 
 const HeaderResponsive = () => {
-  const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(
-    location.pathname === links[0].link || location.pathname === links[1].link
-      ? links.filter((el) => el.link === String(location.pathname))[0].link
-      : links[0].link
-  );
+  const { classes, cx } = useStyles();
   const currentLocation = useLocation();
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [active, setActive] = useState('');
+
   useEffect(() => {
     setActive(
-      location.pathname === links[0].link || location.pathname === links[1].link
-        ? links.filter((el) => el.link === String(location.pathname))[0].link
+      location.pathname === LINKS[0].link || location.pathname === LINKS[1].link
+        ? LINKS.filter((el) => el.link === String(location.pathname))[0].link
         : ''
     );
   }, [currentLocation]);
-  const { classes, cx } = useStyles();
-  const items = links.map((link) => (
+
+  const items = LINKS.map((link) => (
     <Text
       component={Link}
       key={link.label}

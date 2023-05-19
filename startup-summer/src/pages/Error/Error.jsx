@@ -1,5 +1,6 @@
 import React from 'react';
-import UI from '../constants/UI';
+
+import UI from '../../constants/UIConstants';
 
 const Error = () => {
   return (

@@ -6,6 +6,7 @@ export const useStyles = createStyles(() => ({
     width: '100%',
     alignItems: 'flex-start',
     paddingLeft: '28px',
+
     '@media (max-width: 600px)': {
       flexDirection: 'column',
       paddingLeft: '0px'

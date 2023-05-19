@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import CardItem from '../components/CardItem/CardItem';
-import getVacancyById from '../API/getVacancyById/getVacancyById';
-import { Stack, Text } from '@mantine/core';
-import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
-import useStyles from './styles/VacancyStyles';
+import PropTypes from 'prop-types';
+
+import CardItem from '../../components/CardItem/CardItem';
+import getVacancyById from '../../API/getVacancyById';
+import { Stack, Text } from '@mantine/core';
+
+import useStyles from './styles';
 
 const Vacancy = ({ token }) => {
   const { classes } = useStyles();
@@ -14,15 +16,19 @@ const Vacancy = ({ token }) => {
   );
 
   const getVacancyObject = async (token) => {
-    const vacancyId = window.location.pathname.split('/')[2];
-    const vacancy = await getVacancyById(token, vacancyId);
-    if (vacancy) {
-      setCard(vacancy);
+    if (token) {
+      const vacancyId = window.location.pathname.split('/')[2];
+      const vacancy = await getVacancyById(token, vacancyId);
+      if (vacancy) {
+        setCard(vacancy);
+      }
     }
   };
 
   useEffect(() => {
-    getVacancyObject(token);
+    if (token) {
+      getVacancyObject(token);
+    }
   }, [token]);
 
   useEffect(() => {

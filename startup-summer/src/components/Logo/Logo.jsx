@@ -1,7 +1,8 @@
+import { NavLink } from 'react-router-dom';
+
 import { Flex, Text } from '@mantine/core';
 import { LOGO } from '../../constants/constants';
-import LogoImage from './LogoImage/LogoImage';
-import { NavLink } from 'react-router-dom';
+import LogoImage from './LogoIcon/LogoIcon';
 
 const Logo = () => {
   return (

@@ -1,6 +1,8 @@
-import { Checkbox } from '@mantine/core';
 import PropTypes from 'prop-types';
-import Star from './StarIcon/Star';
+
+import { Checkbox } from '@mantine/core';
+import Star from './StarIcon/StarIcon';
+
 import { inputStyles, useStyles } from './styles';
 
 const CheckboxIcon = ({ className }) => <Star className={className} />;

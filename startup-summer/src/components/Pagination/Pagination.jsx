@@ -1,5 +1,6 @@
-import { Group, Pagination } from '@mantine/core';
 import { useState } from 'react';
+
+import { Group, Pagination } from '@mantine/core';
 
 const PaginationButtons = () => {
   const [activePage, setPage] = useState(1);

@@ -1,6 +1,7 @@
-import { Stack, UnstyledButton } from '@mantine/core';
-import NumberInputIcon from './NumberInputIcon';
 import PropTypes from 'prop-types';
+
+import { Stack, UnstyledButton } from '@mantine/core';
+import NumberInputIcon from './NumberInputIcon/NumberInputIcon';
 
 const NumberInputButtons = ({ handlers }) => (
   <Stack sx={{ height: '30px', gap: '0' }}>
