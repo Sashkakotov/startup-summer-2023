@@ -1,4 +1,5 @@
 import { createStyles } from '@mantine/core';
+import { GRAY_200, BLUE_600, BLUE_400, BLUE_ACTIVE } from '../../constants/constants';
 
 export const useStyles = createStyles(() => ({
   input: {
@@ -8,7 +9,7 @@ export const useStyles = createStyles(() => ({
   rightSectionButton: {
     width: '83px',
     height: '32px',
-    background: '#5E96FC',
+    background: `${BLUE_600}`,
     borderRadius: '8px',
     border: 'none',
     fontFamily: 'Inter-Medium-500',
@@ -17,10 +18,10 @@ export const useStyles = createStyles(() => ({
     lineHeight: '21px',
     textAlign: 'center',
     '&:hover': {
-      background: '#92C1FF'
+      background: `${BLUE_400}`
     },
     '&:active': {
-      background: '#3B7CD3'
+      background: `${BLUE_ACTIVE}`
     }
   },
   inputBox: {
@@ -33,8 +34,8 @@ export const textInputStyles = () => ({
   input: {
     height: '48px',
     borderRadius: '8px',
-    border: '1px solid #EAEBED',
-    caretColor: '#5E96FC',
+    border: `1px solid ${GRAY_200}`,
+    caretColor: `${BLUE_600}`,
     fontFamily: 'Inter-Regular-400'
   },
   rightSection: {

@@ -4,6 +4,7 @@ import { Group, Pagination } from '@mantine/core';
 
 const PaginationButtons = () => {
   const [activePage, setPage] = useState(1);
+
   return (
     <Pagination.Root onChange={setPage} boundaries={0} siblings={1} defaultValue={10}>
       <Group spacing={5} position="center">

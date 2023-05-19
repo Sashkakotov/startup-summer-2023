@@ -1,4 +1,5 @@
 import { createStyles } from '@mantine/core';
+import { BLUE_100, BLUE_ACTIVE } from '../../constants/constants';
 
 const useStyles = createStyles(() => ({
   stack: {
@@ -18,16 +19,16 @@ const useStyles = createStyles(() => ({
   button: {
     height: '42px',
     width: '164px',
-    background: '#DEECFF !important',
+    background: `${BLUE_100} !important`,
     borderRadius: '8px',
     fontFamily: 'Inter-SemiBold-600',
     fontWeight: 600,
-    color: '#3B7CD3',
+    color: `${BLUE_ACTIVE}`,
     '&:hover': {
       color: '#FFFFFF'
     },
     '&:active': {
-      color: '#3B7CD3'
+      color: `${BLUE_ACTIVE}`
     }
   }
 }));

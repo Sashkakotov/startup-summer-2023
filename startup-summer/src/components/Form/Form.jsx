@@ -8,6 +8,7 @@ import ResetButton from '../ResetButton/ResetButton';
 import UI from '../../constants/UIConstants';
 
 import { selectStyles, useStyles } from './styles';
+import { GRAY_500 } from '../../constants/constants';
 
 const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
   const { classes } = useStyles();
@@ -33,7 +34,7 @@ const Form = ({ industriesList, form, handleFormSubmit, setFormValues }) => {
               data={industriesList}
               placeholder={UI.chooseIndustry}
               radius={8}
-              rightSection={<SelectIcon size={24} strokeWidth={1.5} color={'#ACADB9'} />}
+              rightSection={<SelectIcon size={24} strokeWidth={1.5} color={GRAY_500} />}
               onDropdownOpen={() => setOpened(true)}
               onDropdownClose={() => setOpened(false)}
               styles={selectStyles(opened)}

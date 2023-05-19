@@ -1,31 +1,33 @@
+import { GRAY_500, BLUE_600, BLUE_400 } from '../../constants/constants';
+
 const resetButtonStyles = () => ({
   root: {
     maxWidth: '115px',
     width: '100%',
     height: '20px',
-    color: '#ACADB9',
+    color: `${GRAY_500}`,
     fontSize: '14px',
     fontFamily: 'Inter-Medium-500',
     fontWeight: '500',
     lineHeight: '20px',
     padding: '0px',
     '&:hover': {
-      color: '#92C1FF',
+      color: `${BLUE_400}`,
       background: '#FFFFFF',
       '& line': {
-        stroke: '#92C1FF'
+        stroke: `${BLUE_400}`
       }
     },
     '&:active': {
-      color: '#5E96FC',
+      color: `${BLUE_600}`,
       background: '#FFFFFF',
       '& line': {
-        stroke: '#5E96FC'
+        stroke: `${BLUE_600}`
       }
     }
   },
   rightIcon: {
-    color: '#ACADB9',
+    color: `${GRAY_500}`,
     width: '16px',
     height: '16px',
     marginLeft: '0px'

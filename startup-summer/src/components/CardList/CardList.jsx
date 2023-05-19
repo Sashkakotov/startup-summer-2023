@@ -18,6 +18,7 @@ const Cardlist = ({ cards, checkedCards, setCheckedCards }) => {
     </Stack>
   );
 };
+
 Cardlist.propTypes = {
   cards: PropTypes.array.isRequired,
   checkedCards: PropTypes.array.isRequired,

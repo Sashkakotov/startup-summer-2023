@@ -28,6 +28,7 @@ StarButton.propTypes = {
   checkboxHandler: PropTypes.func,
   id: PropTypes.number
 };
+
 CheckboxIcon.propTypes = {
   className: PropTypes.string
 };

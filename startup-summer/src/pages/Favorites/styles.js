@@ -1,4 +1,5 @@
 import { createStyles } from '@mantine/core';
+import { BLUE_600 } from '../../constants/constants';
 
 export const useStyles = createStyles(() => ({
   stack: {
@@ -12,7 +13,7 @@ export const useStyles = createStyles(() => ({
 export const paginationStyles = () => ({
   control: {
     '&[data-active]': {
-      background: '#5E96FC'
+      background: `${BLUE_600}`
     }
   },
   dots: {

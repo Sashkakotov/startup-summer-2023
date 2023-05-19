@@ -53,7 +53,6 @@ const Home = ({ token }) => {
         setCards(cardsArray.objects);
         setTotalPage(cardsArray.total);
       }
-
       setLoader(false);
     },
     [formValues, navigate, page, searchInputValue]
@@ -96,7 +95,6 @@ const Home = ({ token }) => {
         />
         <Stack className={classes.stack}>
           <SearchInput handleSearchInput={handleSearchInput} searchInputValue={searchInputValue} />
-
           <Box className={classes.box}>
             {loader && <Loader className={classes.loader} />}
             {cards.length > 0 && (

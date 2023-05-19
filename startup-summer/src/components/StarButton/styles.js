@@ -1,11 +1,12 @@
 import { createStyles } from '@mantine/core';
+import { GRAY_500, BLUE_600 } from '../../constants/constants';
 
 export const useStyles = createStyles((theme, checked) => ({
   icon: {
     '& svg': {
       width: '22px',
       height: '22px',
-      fill: checked ? '#5E96FC' : 'none',
+      fill: checked ? `${BLUE_600}` : 'none',
       position: 'absolute',
       top: '0rem',
       right: '0rem',
@@ -14,11 +15,11 @@ export const useStyles = createStyles((theme, checked) => ({
       pointerEvents: 'none'
     },
     '& path': {
-      stroke: checked ? '#5E96FC' : '#ACADB9'
+      stroke: checked ? `${BLUE_600}` : `${GRAY_500}`
     },
     '&:hover': {
       '& path': {
-        stroke: '#5E96FC'
+        stroke: `${BLUE_600}`
       }
     }
   },

@@ -8,6 +8,7 @@ import useStyles from './styles';
 
 const NotFoundPage = () => {
   const { classes } = useStyles();
+
   return (
     <Stack className={classes.stack}>
       <NotFoundImage />

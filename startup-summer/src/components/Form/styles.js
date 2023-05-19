@@ -1,11 +1,19 @@
 import { createStyles } from '@mantine/core';
+import {
+  GRAY_200,
+  GRAY_500,
+  BLUE_600,
+  BLUE_400,
+  BLUE_100,
+  BLUE_ACTIVE
+} from '../../constants/constants';
 
 export const useStyles = createStyles(() => ({
   formBox: {
     maxWidth: '315px',
     width: '100%',
     background: '#FFFFFF',
-    border: '1px solid #EAEBED',
+    border: `1px solid ${GRAY_200}`,
     borderRadius: '12px',
     marginLeft: '0px !important',
     marginRight: '0px !important',
@@ -24,14 +32,14 @@ export const useStyles = createStyles(() => ({
     height: '40px',
     marginTop: '5px',
     borderRadius: '8px',
-    background: '#5E96FC',
+    background: `${BLUE_600}`,
     fontFamily: 'Inter-Medium-500',
     fontWeight: '500',
     '&:hover': {
-      background: '#92C1FF'
+      background: `${BLUE_400}`
     },
     '&:active': {
-      background: '#3B7CD3'
+      background: `${BLUE_ACTIVE}`
     }
   },
   stack: {
@@ -64,12 +72,12 @@ export const selectStyles = (opened) => ({
     pointerEvents: 'none',
     transform: opened ? 'rotate(180deg)' : 'rotate(0deg)',
     '& path': {
-      stroke: opened ? '#5E96FC' : '#ACADB9'
+      stroke: opened ? `${BLUE_600}` : `${GRAY_500}`
     }
   },
   item: {
     '&:hover': {
-      background: '#DEECFF'
+      background: `${BLUE_100}`
     }
   }
 });
@@ -79,7 +87,7 @@ export const numberInputStyles = () => ({
     fontFamily: 'Inter-Regular-400',
     height: '42px',
     borderRadius: '8px',
-    caretColor: '#5E96FC'
+    caretColor: `${BLUE_600}`
   },
   rightSection: {
     height: '24px',
@@ -88,12 +96,12 @@ export const numberInputStyles = () => ({
     '& button': {
       '&:hover': {
         '& path': {
-          stroke: '#92C1FF'
+          stroke: `${BLUE_400}`
         }
       },
       '&:active': {
         '& path': {
-          stroke: '#5E96FC'
+          stroke: `${BLUE_600}`
         }
       }
     }

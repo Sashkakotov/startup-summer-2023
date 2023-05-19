@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import { Flex, Text } from '@mantine/core';
-import { LOGO } from '../../constants/constants';
+import { BLACK, LOGO } from '../../constants/constants';
 import LogoImage from './LogoIcon/LogoIcon';
 
 const Logo = () => {
@@ -17,7 +17,7 @@ const Logo = () => {
         ff={'Poppins-SemiBold-600'}
         fs={'normal'}
         lh={'36px'}
-        color="#232134">
+        color={BLACK}>
         {LOGO}
       </Text>
     </Flex>

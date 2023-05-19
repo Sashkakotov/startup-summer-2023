@@ -1,4 +1,5 @@
 import { createStyles } from '@mantine/core';
+import { GRAY_200, GRAY_600, BLACK, BLUE_600 } from '../../constants/constants';
 
 const useStyles = createStyles(() => ({
   flex: {
@@ -9,7 +10,7 @@ const useStyles = createStyles(() => ({
     width: '100%',
     padding: '1.3rem !important',
     paddingLeft: '1.5rem !important',
-    border: '1px solid #EAEBED',
+    border: `1px solid ${GRAY_200}`,
     borderRadius: '12px',
     cursor: 'pointer'
   },
@@ -25,7 +26,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '600',
     fontSize: '20px',
     lineHeight: '24px',
-    color: '#5E96FC'
+    color: `${BLUE_600}`
   },
   paymentText: {
     fontStyle: 'normal',
@@ -33,7 +34,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '600',
     fontSize: '16px',
     lineHeight: '20px',
-    color: '#232134'
+    color: `${BLACK}`
   },
   dot: {
     fontFamily: 'Poppins-SemiBold-600',
@@ -41,7 +42,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '400',
     fontSize: '20px',
     lineHeight: '21px',
-    color: '#7B7C88'
+    color: `${GRAY_600}`
   },
   typeOfWork: {
     fontStyle: 'normal',
@@ -49,7 +50,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '400',
     fontSize: '16px',
     lineHeight: '20px',
-    color: '#232134'
+    color: `${BLACK}`
   },
   cardProfessionTextVacancy: {
     fontStyle: 'normal',
@@ -57,7 +58,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '700',
     fontSize: '28px',
     lineHeight: '34px',
-    color: '#232134'
+    color: `${BLACK}`
   },
   paymentTextVacancy: {
     fontStyle: 'normal',
@@ -65,7 +66,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '700',
     fontSize: '20px',
     lineHeight: '20px',
-    color: '#232134'
+    color: `${BLACK}`
   },
   typeOfWorkVacancy: {
     fontStyle: 'normal',
@@ -73,7 +74,7 @@ const useStyles = createStyles(() => ({
     fontWeight: '400',
     fontSize: '20px',
     lineHeight: '20px',
-    color: '#232134'
+    color: `${BLACK}`
   },
   stackVacancy: {
     width: '90%',

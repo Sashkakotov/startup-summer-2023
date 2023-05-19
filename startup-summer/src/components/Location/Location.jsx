@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Flex, Text } from '@mantine/core';
 import LocationImage from './LocationIcon/LocationIcon';
+import { BLACK } from '../../constants/constants';
 
 const Location = ({ cardTitle }) => {
   return (
@@ -12,7 +13,7 @@ const Location = ({ cardTitle }) => {
         ff={'Inter-Regular-400'}
         size={'16px'}
         lh={'19px'}
-        color="#232134">
+        color={BLACK}>
         {cardTitle}
       </Text>
     </Flex>

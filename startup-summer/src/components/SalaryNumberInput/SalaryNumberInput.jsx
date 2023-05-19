@@ -20,6 +20,7 @@ const SalaryNumberInput = ({ form, placeholderText, dataElement, min }) => {
     />
   );
 };
+
 SalaryNumberInput.propTypes = {
   form: PropTypes.object.isRequired,
   placeholderText: PropTypes.string.isRequired,
