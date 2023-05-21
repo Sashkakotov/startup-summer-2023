@@ -23,13 +23,17 @@ const CardItem = ({ card, checkedCards, setCheckedCards, isVacancy }) => {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (isVacancy) {
+      e.preventDefault();
+      return;
+    }
     localStorage.setItem('openCard', JSON.stringify(card));
-    navigate(`/vacancy/${card.id}`);
+    navigate(`/vacancy/${card.id}`, { state: { prevUrl: window.location.pathname } });
   };
 
   return (
-    <Card onClick={handleClick} className={classes.card} data-elem={`vacancy-${card.id}`}>
+    <Card onClick={(e) => handleClick(e)} className={classes.card} data-elem={`vacancy-${card.id}`}>
       <Flex className={classes.flex}>
         <Stack className={isVacancy ? classes.stackVacancy : classes.stack}>
           <Group position="apart">

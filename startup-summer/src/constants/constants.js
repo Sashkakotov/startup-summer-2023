@@ -24,3 +24,5 @@ export const BLUE_600 = '#5E96FC';
 export const BLUE_400 = '#92C1FF';
 export const BLUE_100 = '#DEECFF';
 export const BLUE_ACTIVE = '#3B7CD3';
+
+export const EMPTY_ROUTE = '/emptystate';

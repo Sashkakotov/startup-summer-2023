@@ -4,24 +4,27 @@ import PropTypes from 'prop-types';
 
 import CardItem from '../../components/CardItem/CardItem';
 import getVacancyById from '../../API/getVacancyById';
-import { Stack, Text } from '@mantine/core';
+import { Loader, Stack, Text } from '@mantine/core';
 
 import useStyles from './styles';
 
 const Vacancy = ({ token }) => {
   const { classes } = useStyles();
   const [card, setCard] = useState({});
+  const [loader, setLoader] = useState(false);
   const [checkedCards, setCheckedCards] = useState(
     localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : []
   );
 
   const getVacancyObject = async (token) => {
+    setLoader(true);
     if (token) {
       const vacancyId = window.location.pathname.split('/')[2];
       const vacancy = await getVacancyById(token, vacancyId);
       if (vacancy) {
         setCard(vacancy);
       }
+      setLoader(false);
     }
   };
 
@@ -36,7 +39,8 @@ const Vacancy = ({ token }) => {
   }, [checkedCards]);
 
   return (
-    <main className="main" data-testid="main">
+    <main className="main" data-testid="main" style={{ minHeight: '594px' }}>
+      {loader && <Loader className={classes.loader} />}
       {card.id && (
         <Stack spacing={'21px'}>
           <CardItem

@@ -2,6 +2,11 @@ import { createStyles } from '@mantine/core';
 import { GRAY_200, BLACK } from '../../constants/constants';
 
 const useStyles = createStyles(() => ({
+  loader: {
+    position: 'absolute',
+    top: '30%',
+    zIndex: '10'
+  },
   vacancyText: {
     backgroundColor: '#fff',
     maxWidth: '773px',

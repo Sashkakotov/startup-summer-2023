@@ -9,7 +9,7 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import getVacancies from '../../API/getVacancies';
 import Cardlist from '../../components/CardList/CardList';
 import getIndustryList from '../../API/getIndustryList';
-import { MAX_CARDS_ON_PAGE, MAX_PAGE } from '../../constants/constants';
+import { EMPTY_ROUTE, LINKS, MAX_CARDS_ON_PAGE, MAX_PAGE } from '../../constants/constants';
 
 import { paginationStyles, useStyles } from './styles';
 
@@ -47,7 +47,7 @@ const Home = ({ token }) => {
       setLoader(true);
       const cardsArray = await getVacancies(token, page, searchInputValue, formValues);
       if (!cardsArray.objects.length) {
-        navigate('/emptystate');
+        navigate(EMPTY_ROUTE, { state: { prevUrl: LINKS[0].link } });
       }
       if (cardsArray) {
         setCards(cardsArray.objects);

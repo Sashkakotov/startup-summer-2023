@@ -6,7 +6,8 @@ export const useStyles = createStyles(() => ({
     maxWidth: '857px',
     width: '100%',
     alignItems: 'center',
-    padding: '0 28px 0 28px'
+    padding: '0 28px 0 28px',
+    minHeight: '594px'
   }
 }));
 
