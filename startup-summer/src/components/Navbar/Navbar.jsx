@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useDisclosure } from '@mantine/hooks';
 import { Header, Container, Group, Burger, Paper, Transition, Text } from '@mantine/core';
@@ -10,17 +10,17 @@ import useStyles from './styles';
 
 const HeaderResponsive = () => {
   const { classes, cx } = useStyles();
-  const currentLocation = useLocation();
+
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState('');
 
   useEffect(() => {
     setActive(
       location.pathname === LINKS[0].link || location.pathname === LINKS[1].link
-        ? LINKS.filter((el) => el.link === String(location.pathname))[0].link
+        ? LINKS.filter((el) => el.link === location.pathname)[0].link
         : ''
     );
-  }, [currentLocation]);
+  }, []);
 
   const items = LINKS.map((link) => (
     <Text
