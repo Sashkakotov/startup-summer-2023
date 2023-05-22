@@ -20,11 +20,20 @@ function App() {
   const [token, setToken] = useState('');
 
   const getToken = async () => {
-    const token = await authorization();
-    if (token) {
-      setToken(token);
+    const getTokenFromLS =
+      localStorage.getItem('authToken') && JSON.parse(localStorage.getItem('authToken'));
+
+    if (getTokenFromLS && getTokenFromLS.ttl > Date.now() / 1000) {
+      setToken(getTokenFromLS.access_token);
+    } else {
+      const token = await authorization();
+      if (token) {
+        localStorage.setItem('authToken', JSON.stringify(token));
+        setToken(token.access_token);
+      }
     }
   };
+
   useEffect(() => {
     getToken();
   }, []);

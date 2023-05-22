@@ -10,7 +10,8 @@ const authorization = async () => {
       }
     });
     const result = await response.json();
-    return result.access_token;
+
+    return result;
   } catch (err) {
     console.error(err);
   }
