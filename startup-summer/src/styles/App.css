@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Inter-Regular-400';
+  src: local('Inter-Regular-400'), url('../fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter-Bold-700';
+  src: local('Inter-Bold-700'), url('../fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Inter-SemiBold-600';
+  src: local('Inter-SemiBold-600'), url('../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Inter-Medium-500';
+  src: local('Inter-Medium-500'), url('../fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins-SemiBold-600';
+  src: local('Poppins-SemiBold-600'), url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+}
+#root {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 935px) {
+  #root {
+    width: fit-content;
+  }
+}
